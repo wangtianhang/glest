@@ -142,10 +142,6 @@
     <ClCompile Include="..\..\glest_game\world\world.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\deps\include\glew.h" />
-    <ClInclude Include="..\..\..\deps\include\GLU.h" />
-    <ClInclude Include="..\..\..\deps\include\glxew.h" />
-    <ClInclude Include="..\..\..\deps\include\wglew.h" />
     <ClInclude Include="..\..\glest_game\ai\ai.h" />
     <ClInclude Include="..\..\glest_game\ai\ai_interface.h" />
     <ClInclude Include="..\..\glest_game\ai\ai_rule.h" />

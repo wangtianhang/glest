@@ -151,7 +151,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\..\deps\include;..\..\..\source\shared_lib\include\sound\ds8;..\..\..\source\shared_lib\include\graphics;..\..\..\source\shared_lib\include\graphics\gl;..\..\..\source\shared_lib\include\platform\win32;..\..\..\source\shared_lib\include\sound;..\..\..\source\shared_lib\include\util;..\..\..\source\shared_lib\include\xml;..\..\..\source\shared_lib\include\sound\openal;..\..\..\source\shared_lib\include\lua;..\..\..\source\lua-5.2.3\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\deps\include\opengles;..\..\..\deps\include;..\..\..\source\shared_lib\include\sound\ds8;..\..\..\source\shared_lib\include\graphics;..\..\..\source\shared_lib\include\graphics\gl;..\..\..\source\shared_lib\include\platform\win32;..\..\..\source\shared_lib\include\sound;..\..\..\source\shared_lib\include\util;..\..\..\source\shared_lib\include\xml;..\..\..\source\shared_lib\include\sound\openal;..\..\..\source\shared_lib\include\lua;..\..\..\source\lua-5.2.3\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

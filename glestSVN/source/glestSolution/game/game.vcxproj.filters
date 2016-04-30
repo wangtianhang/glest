@@ -272,18 +272,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\deps\include\glew.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\deps\include\GLU.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\deps\include\glxew.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\deps\include\wglew.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\glest_game\ai\ai.h">
       <Filter>源文件\ai</Filter>
     </ClInclude>
