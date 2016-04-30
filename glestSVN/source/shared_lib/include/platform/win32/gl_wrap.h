@@ -21,11 +21,11 @@
 //#define GL_GLEXT_PROTOTYPES 1
 // #include "glext.h"
 // #include "wglext.h"
-#include "glew.h"
+#include "./opengl/glew.h"
 //#include "glxew.h"
-#include "wglew.h"
+#include "./opengl/wglew.h"
 
-#include <glu.h>
+#include "./opengl/glu.h"
 
 #include <string>
 
