@@ -37,8 +37,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>f:\glestSVN\source\glest_game\ai;f:\glestSVN\source\glest_game\facilities;f:\glestSVN\source\glest_game\game;f:\glestSVN\source\glest_game\global;f:\glestSVN\source\glest_game\graphics;f:\glestSVN\source\glest_game\gui;f:\glestSVN\source\glest_game\main;f:\glestSVN\source\glest_game\menu;f:\glestSVN\source\glest_game\network;f:\glestSVN\source\glest_game\sound;f:\glestSVN\source\glest_game\type_instances;f:\glestSVN\source\glest_game\types;f:\glestSVN\source\glest_game\world;f:\glestSVN\source\lua-5.2.3\src;f:\glestSVN\deps\include;f:\glestSVN\source\shared_lib\include\sound\ds8;f:\glestSVN\source\shared_lib\include\graphics;f:\glestSVN\source\shared_lib\include\graphics\gl;f:\glestSVN\source\shared_lib\include\platform\win32;f:\glestSVN\source\shared_lib\include\sound;f:\glestSVN\source\shared_lib\include\util;f:\glestSVN\source\shared_lib\include\xml;f:\glestSVN\source\shared_lib\include\lua;$(IncludePath)</IncludePath>
-    <OutDir>F:\glestSVN\data\glest_game</OutDir>
+    <IncludePath>..\..\..\source\glest_game\ai;..\..\..\source\glest_game\facilities;..\..\..\source\glest_game\game;..\..\..\source\glest_game\global;..\..\..\source\glest_game\graphics;..\..\..\source\glest_game\gui;..\..\..\source\glest_game\main;..\..\..\source\glest_game\menu;..\..\..\source\glest_game\network;..\..\..\source\glest_game\sound;..\..\..\source\glest_game\type_instances;..\..\..\source\glest_game\types;..\..\..\source\glest_game\world;..\..\..\source\lua-5.2.3\src;..\..\..\deps\include;..\..\..\source\shared_lib\include\sound\ds8;..\..\..\source\shared_lib\include\graphics;..\..\..\source\shared_lib\include\graphics\gl;..\..\..\source\shared_lib\include\platform\win32;..\..\..\source\shared_lib\include\sound;..\..\..\source\shared_lib\include\util;..\..\..\source\shared_lib\include\xml;..\..\..\source\shared_lib\include\lua;$(IncludePath)</IncludePath>
+    <OutDir>..\..\..\data\glest_game</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -50,7 +50,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>dsound.lib;dxguid.lib;ogg_static.lib;vorbis_static.lib;vorbisfile_static.lib;xerces-c_2.lib;opengl32.lib;glu32.lib;wsock32.lib;libglest.lib;mmc.lib;lua.lib;dbghelp.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;f:\glestSVN\deps\lib;f:\glestSVN\source\glestSolution\Debug;f:\glestSVN\glew\glew-1.11.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;..\..\..\deps\lib;..\..\..\source\glestSolution\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
