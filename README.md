@@ -1,2 +1,2 @@
 # glest
-a glest port for opengl es
+a glest compile on windows for vs2010
