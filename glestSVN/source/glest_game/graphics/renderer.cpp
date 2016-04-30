@@ -2100,16 +2100,16 @@ string Renderer::getGlInfo(){
     infoStr+= string(getGlRenderer())+"\n";
     infoStr+= "   "+lang.get("OpenGlVendor")+": ";
     infoStr+= string(getGlVendor())+"\n";
-	infoStr+= "   "+lang.get("OpenGlMaxLights")+": ";
-    infoStr+= intToStr(getGlMaxLights())+"\n";
+	//infoStr+= "   "+lang.get("OpenGlMaxLights")+": ";
+    //infoStr+= intToStr(getGlMaxLights())+"\n";
 	infoStr+= "   "+lang.get("OpenGlMaxTextureSize")+": ";
     infoStr+= intToStr(getGlMaxTextureSize())+"\n";
 	infoStr+= "   "+lang.get("OpenGlMaxTextureUnits")+": ";
     infoStr+= intToStr(getGlMaxTextureUnits())+"\n";
-	infoStr+= "   "+lang.get("OpenGlModelviewStack")+": ";
-    infoStr+= intToStr(getGlModelviewMatrixStackDepth())+"\n";
-	infoStr+= "   "+lang.get("OpenGlProjectionStack")+": ";
-    infoStr+= intToStr(getGlProjectionMatrixStackDepth())+"\n";
+	//infoStr+= "   "+lang.get("OpenGlModelviewStack")+": ";
+    //infoStr+= intToStr(getGlModelviewMatrixStackDepth())+"\n";
+	//infoStr+= "   "+lang.get("OpenGlProjectionStack")+": ";
+    //infoStr+= intToStr(getGlProjectionMatrixStackDepth())+"\n";
 
 	return infoStr;
 }

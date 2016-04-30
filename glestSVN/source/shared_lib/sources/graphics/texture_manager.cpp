@@ -64,12 +64,12 @@ Texture *TextureManager::getTexture(const string &path){
 	return NULL;
 }
 
-Texture1D *TextureManager::newTexture1D(){
-	Texture1D *texture1D= GraphicsInterface::getInstance().getFactory()->newTexture1D();
-	textures.push_back(texture1D);
-
-	return texture1D;
-}
+// Texture1D *TextureManager::newTexture1D(){
+// 	Texture1D *texture1D= GraphicsInterface::getInstance().getFactory()->newTexture1D();
+// 	textures.push_back(texture1D);
+// 
+// 	return texture1D;
+// }
 
 Texture2D *TextureManager::newTexture2D(){
 	Texture2D *texture2D= GraphicsInterface::getInstance().getFactory()->newTexture2D();

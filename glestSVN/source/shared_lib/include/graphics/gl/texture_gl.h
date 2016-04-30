@@ -33,11 +33,11 @@ public:
 //	class Texture1DGl
 // =====================================================
 
-class Texture1DGl: public Texture1D, public TextureGl{
-public:
-	virtual void init(Filter filter, int maxAnisotropy= 1);
-	virtual void end();
-};
+// class Texture1DGl: public Texture1D, public TextureGl{
+// public:
+// 	virtual void init(Filter filter, int maxAnisotropy= 1);
+// 	virtual void end();
+// };
 
 // =====================================================
 //	class Texture2DGl

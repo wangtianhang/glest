@@ -29,6 +29,7 @@
 
 #include "./opengles/EGL/egl.h"
 #include "./opengles/GLES2/gl2.h"
+#include "./opengles/GLES2/gl2ext.h"
 
 //#include "./opengl/glu.h"
 

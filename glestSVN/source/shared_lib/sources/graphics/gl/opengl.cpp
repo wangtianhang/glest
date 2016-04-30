@@ -111,11 +111,11 @@ const char *getGlPlatformExtensions(){
 	return getPlatformExtensions(static_cast<ContextGl*>(c)->getPlatformContextGl());
 }
 
-int getGlMaxLights(){
-	int i;
-	glGetIntegerv(GL_MAX_LIGHTS, &i);
-	return i;
-}
+// int getGlMaxLights(){
+// 	int i;
+// 	glGetIntegerv(GL_MAX_LIGHTS, &i);
+// 	return i;
+// }
 
 int getGlMaxTextureSize(){
 	int i;
@@ -129,17 +129,17 @@ int getGlMaxTextureUnits(){
 	return i;	
 }
 
-int getGlModelviewMatrixStackDepth(){
-	int i;
-	glGetIntegerv(GL_MAX_MODELVIEW_STACK_DEPTH, &i);
-	return i;
-}
+// int getGlModelviewMatrixStackDepth(){
+// 	int i;
+// 	glGetIntegerv(GL_MAX_MODELVIEW_STACK_DEPTH, &i);
+// 	return i;
+// }
 
-int getGlProjectionMatrixStackDepth(){
-	int i;
-	glGetIntegerv(GL_MAX_PROJECTION_STACK_DEPTH, &i);
-	return i;	
-}
+// int getGlProjectionMatrixStackDepth(){
+// 	int i;
+// 	glGetIntegerv(GL_MAX_PROJECTION_STACK_DEPTH, &i);
+// 	return i;	
+// }
 
 void checkGlExtension(const char *extensionName){
 	if(!isGlExtensionSupported(extensionName)){
