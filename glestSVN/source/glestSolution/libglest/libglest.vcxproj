@@ -59,6 +59,12 @@
     <ClCompile Include="..\..\shared_lib\sources\xml\xml_parser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\deps\include\opengles\EGL\egl.h" />
+    <ClInclude Include="..\..\..\deps\include\opengles\EGL\eglext.h" />
+    <ClInclude Include="..\..\..\deps\include\opengles\EGL\eglplatform.h" />
+    <ClInclude Include="..\..\..\deps\include\opengles\GLES2\gl2.h" />
+    <ClInclude Include="..\..\..\deps\include\opengles\GLES2\gl2ext.h" />
+    <ClInclude Include="..\..\..\deps\include\opengles\GLES2\gl2platform.h" />
     <ClInclude Include="..\..\shared_lib\include\graphics\buffer.h" />
     <ClInclude Include="..\..\shared_lib\include\graphics\camera.h" />
     <ClInclude Include="..\..\shared_lib\include\graphics\context.h" />

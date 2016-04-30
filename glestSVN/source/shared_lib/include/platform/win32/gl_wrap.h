@@ -25,6 +25,8 @@
 //#include "glxew.h"
 //#include "./opengl/wglew.h"
 
+#define GL_GLEXT_PROTOTYPES
+
 #include "./opengles/EGL/egl.h"
 #include "./opengles/GLES2/gl2.h"
 

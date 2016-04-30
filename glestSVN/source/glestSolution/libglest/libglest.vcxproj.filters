@@ -374,5 +374,23 @@
     <ClInclude Include="..\..\shared_lib\include\graphics\vec.h">
       <Filter>源文件\graphics</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\opengles\EGL\egl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\opengles\EGL\eglext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\opengles\EGL\eglplatform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\opengles\GLES2\gl2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\opengles\GLES2\gl2ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\opengles\GLES2\gl2platform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
