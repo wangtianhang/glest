@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\ai">
+      <UniqueIdentifier>{227cd17e-4bd3-4ba1-8538-46221f02a50c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\facilities">
+      <UniqueIdentifier>{96e05e4e-072d-4c78-91f0-c80edbe1f98c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\menu">
+      <UniqueIdentifier>{1fbc706b-9e7b-4a09-b660-b741345e4812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\sound">
+      <UniqueIdentifier>{32d87261-d910-485f-9586-068790a0a865}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\global">
+      <UniqueIdentifier>{11643bc5-6412-4f36-b67e-1c93df9bbee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\gui">
+      <UniqueIdentifier>{96ee7582-d76d-41cd-a4ab-d0b49b032c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\main">
+      <UniqueIdentifier>{5d611e58-3de2-473a-95f0-2c657593409f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\game">
+      <UniqueIdentifier>{734c8099-b0cb-4d91-8df0-288db85eb37c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\world">
+      <UniqueIdentifier>{e5c547ef-4ee4-4510-a672-39040585fc53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\network">
+      <UniqueIdentifier>{beb84195-797c-4a65-b03f-2b28493667e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\types">
+      <UniqueIdentifier>{d7957c21-c3c0-4260-9adf-942d1c834d01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\type_instances">
+      <UniqueIdentifier>{34aed4d7-d3ce-4a5c-affa-c4080d65ae63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\graphics">
+      <UniqueIdentifier>{6b646560-b7c4-4931-a3bb-53f09617618e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\glest_game\ai\ai.cpp">
+      <Filter>源文件\ai</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\ai\ai_interface.cpp">
+      <Filter>源文件\ai</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\ai\ai_rule.cpp">
+      <Filter>源文件\ai</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\ai\path_finder.cpp">
+      <Filter>源文件\ai</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\facilities\auto_test.cpp">
+      <Filter>源文件\facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\facilities\components.cpp">
+      <Filter>源文件\facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\facilities\game_util.cpp">
+      <Filter>源文件\facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\facilities\logger.cpp">
+      <Filter>源文件\facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\main_menu.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_background.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_state_about.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_state_custom_game.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_state_graphic_info.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_state_join_game.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_state_new_game.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_state_options.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_state_root.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\menu\menu_state_scenario.cpp">
+      <Filter>源文件\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\sound\sound_container.cpp">
+      <Filter>源文件\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\sound\sound_renderer.cpp">
+      <Filter>源文件\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\global\config.cpp">
+      <Filter>源文件\global</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\global\core_data.cpp">
+      <Filter>源文件\global</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\global\lang.cpp">
+      <Filter>源文件\global</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\global\metrics.cpp">
+      <Filter>源文件\global</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\gui\display.cpp">
+      <Filter>源文件\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\gui\gui.cpp">
+      <Filter>源文件\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\gui\selection.cpp">
+      <Filter>源文件\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\main\main.cpp">
+      <Filter>源文件\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\main\program.cpp">
+      <Filter>源文件\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\main\intro.cpp">
+      <Filter>源文件\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\main\battle_end.cpp">
+      <Filter>源文件\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\game\chat_manager.cpp">
+      <Filter>源文件\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\game\console.cpp">
+      <Filter>源文件\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\game\game.cpp">
+      <Filter>源文件\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\game\commander.cpp">
+      <Filter>源文件\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\game\game_camera.cpp">
+      <Filter>源文件\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\game\script_manager.cpp">
+      <Filter>源文件\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\game\stats.cpp">
+      <Filter>源文件\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\map.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\minimap.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\scenario.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\surface_atlas.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\tileset.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\time_flow.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\unit_updater.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\water_effects.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\world\world.cpp">
+      <Filter>源文件\world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\network\client_interface.cpp">
+      <Filter>源文件\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\network\connection_slot.cpp">
+      <Filter>源文件\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\network\network_interface.cpp">
+      <Filter>源文件\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\network\network_manager.cpp">
+      <Filter>源文件\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\network\network_message.cpp">
+      <Filter>源文件\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\network\network_types.cpp">
+      <Filter>源文件\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\network\server_interface.cpp">
+      <Filter>源文件\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\command_type.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\type_instances\command.cpp">
+      <Filter>源文件\type_instances</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\type_instances\faction.cpp">
+      <Filter>源文件\type_instances</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\faction_type.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\type_instances\object.cpp">
+      <Filter>源文件\type_instances</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\object_type.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\type_instances\resource.cpp">
+      <Filter>源文件\type_instances</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\resource_type.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\type_instances\unit.cpp">
+      <Filter>源文件\type_instances</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\unit_type.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\type_instances\upgrade.cpp">
+      <Filter>源文件\type_instances</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\upgrade_type.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\damage_multiplier.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\element_type.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\skill_type.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\types\tech_tree.cpp">
+      <Filter>源文件\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\graphics\renderer.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glest_game\graphics\particle_type.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\deps\include\glew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\GLU.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\glxew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\include\wglew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\ai\ai.h">
+      <Filter>源文件\ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\ai\ai_interface.h">
+      <Filter>源文件\ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\ai\ai_rule.h">
+      <Filter>源文件\ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\ai\path_finder.h">
+      <Filter>源文件\ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\facilities\auto_test.h">
+      <Filter>源文件\facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\facilities\components.h">
+      <Filter>源文件\facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\facilities\game_util.h">
+      <Filter>源文件\facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\facilities\logger.h">
+      <Filter>源文件\facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\main_menu.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_state_scenario.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_background.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_state_about.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_state_custom_game.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_state_graphic_info.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_state_join_game.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_state_new_game.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_state_options.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\menu\menu_state_root.h">
+      <Filter>源文件\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\sound\sound_renderer.h">
+      <Filter>源文件\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\sound\sound_container.h">
+      <Filter>源文件\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\global\config.h">
+      <Filter>源文件\global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\global\core_data.h">
+      <Filter>源文件\global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\global\lang.h">
+      <Filter>源文件\global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\global\metrics.h">
+      <Filter>源文件\global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\gui\display.h">
+      <Filter>源文件\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\gui\gui.h">
+      <Filter>源文件\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\gui\selection.h">
+      <Filter>源文件\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\main\main.h">
+      <Filter>源文件\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\main\program.h">
+      <Filter>源文件\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\main\intro.h">
+      <Filter>源文件\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\main\battle_end.h">
+      <Filter>源文件\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\chat_manager.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\console.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\game.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\commander.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\game_camera.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\game_constants.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\game_settings.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\script_manager.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\game\stats.h">
+      <Filter>源文件\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\map.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\minimap.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\scenario.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\surface_atlas.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\tileset.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\time_flow.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\unit_updater.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\water_effects.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\world\world.h">
+      <Filter>源文件\world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\network\client_interface.h">
+      <Filter>源文件\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\network\connection_slot.h">
+      <Filter>源文件\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\network\network_types.h">
+      <Filter>源文件\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\network\network_interface.h">
+      <Filter>源文件\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\network\network_manager.h">
+      <Filter>源文件\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\network\network_message.h">
+      <Filter>源文件\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\network\server_interface.h">
+      <Filter>源文件\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\command_type.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\type_instances\command.h">
+      <Filter>源文件\type_instances</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\type_instances\faction.h">
+      <Filter>源文件\type_instances</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\faction_type.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\type_instances\object.h">
+      <Filter>源文件\type_instances</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\object_type.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\type_instances\resource.h">
+      <Filter>源文件\type_instances</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\resource_type.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\type_instances\unit.h">
+      <Filter>源文件\type_instances</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\unit_type.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\type_instances\upgrade.h">
+      <Filter>源文件\type_instances</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\upgrade_type.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\damage_multiplier.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\element_type.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\skill_type.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\types\tech_tree.h">
+      <Filter>源文件\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\graphics\renderer.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\glest_game\graphics\particle_type.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\lua">
+      <UniqueIdentifier>{8e17ec47-7236-489e-8915-22caac3fe422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\platform">
+      <UniqueIdentifier>{ff8d9eb8-ca52-417c-a43a-a67b32176ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\platform\win32">
+      <UniqueIdentifier>{fe43478e-9675-4e13-86b6-0352d299aa99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\sound">
+      <UniqueIdentifier>{56d73702-e501-4437-8a90-b9dd67dc600a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\sound\ds8">
+      <UniqueIdentifier>{67c3ab7a-a1ba-4d63-9645-3aa7c17b3bb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\util">
+      <UniqueIdentifier>{e12d81a7-7381-4545-b6f4-12ef09134e0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\xml">
+      <UniqueIdentifier>{a0b06f41-a3b2-4963-aee2-7b38f59db1dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\graphics">
+      <UniqueIdentifier>{c4887baa-96c3-4369-9130-10634fd2b1f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\graphics\gl">
+      <UniqueIdentifier>{2e7f7bcb-a2cb-43de-beb5-392db9086918}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\shared_lib\sources\lua\lua_script.cpp">
+      <Filter>源文件\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\platform\win32\socket.cpp">
+      <Filter>源文件\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\platform\win32\thread.cpp">
+      <Filter>源文件\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\platform\win32\window.cpp">
+      <Filter>源文件\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\platform\win32\window_gl.cpp">
+      <Filter>源文件\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\platform\win32\platform_menu.cpp">
+      <Filter>源文件\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\platform\win32\platform_util.cpp">
+      <Filter>源文件\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\platform\win32\gl_wrap.cpp">
+      <Filter>源文件\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\platform\win32\factory_repository.cpp">
+      <Filter>源文件\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\sound\sound.cpp">
+      <Filter>源文件\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\sound\sound_player.cpp">
+      <Filter>源文件\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\sound\sound_interface.cpp">
+      <Filter>源文件\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\sound\ds8\sound_player_ds8.cpp">
+      <Filter>源文件\sound\ds8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\sound\sound_file_loader.cpp">
+      <Filter>源文件\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\util\util.cpp">
+      <Filter>源文件\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\util\random.cpp">
+      <Filter>源文件\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\util\profiler.cpp">
+      <Filter>源文件\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\util\properties.cpp">
+      <Filter>源文件\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\util\leak_dumper.cpp">
+      <Filter>源文件\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\util\conversion.cpp">
+      <Filter>源文件\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\util\checksum.cpp">
+      <Filter>源文件\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\xml\xml_parser.cpp">
+      <Filter>源文件\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\gl\context_gl.cpp">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\gl\font_gl.cpp">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\gl\model_renderer_gl.cpp">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\gl\opengl.cpp">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\gl\particle_renderer_gl.cpp">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\gl\shader_gl.cpp">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\gl\text_renderer_gl.cpp">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\gl\texture_gl.cpp">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\buffer.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\camera.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\context.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\font.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\font_manager.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\graphics_interface.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\interpolation.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\model.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\model_manager.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\particle.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\pixmap.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\quaternion.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\shader.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\shader_manager.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\texture.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared_lib\sources\graphics\texture_manager.cpp">
+      <Filter>源文件\graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\shared_lib\include\lua\lua_script.h">
+      <Filter>源文件\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\socket.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\thread.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\types.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\window_gl.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\window.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\platform_main.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\platform_menu.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\platform_definitions.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\platform_util.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\gl_wrap.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\platform\win32\factory_repository.h">
+      <Filter>源文件\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\sound\sound.h">
+      <Filter>源文件\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\sound\sound_factory.h">
+      <Filter>源文件\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\sound\sound_player.h">
+      <Filter>源文件\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\sound\sound_interface.h">
+      <Filter>源文件\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\sound\ds8\sound_player_ds8.h">
+      <Filter>源文件\sound\ds8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\sound\ds8\sound_factory_ds8.h">
+      <Filter>源文件\sound\ds8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\sound\sound_file_loader.h">
+      <Filter>源文件\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\util\util.h">
+      <Filter>源文件\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\util\random.h">
+      <Filter>源文件\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\util\profiler.h">
+      <Filter>源文件\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\util\properties.h">
+      <Filter>源文件\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\util\factory.h">
+      <Filter>源文件\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\util\leak_dumper.h">
+      <Filter>源文件\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\util\conversion.h">
+      <Filter>源文件\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\util\checksum.h">
+      <Filter>源文件\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\xml\xml_parser.h">
+      <Filter>源文件\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\context_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\font_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\model_renderer_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\opengl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\particle_renderer_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\shader_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\text_renderer_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\texture_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\buffer.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\camera.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\context.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\font.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\font_manager.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\graphics_interface.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\interpolation.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\model.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\model_manager.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\particle.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\pixmap.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\quaternion.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\shader.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\shader_manager.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\texture.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\texture_manager.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\graphics_factory.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_basic_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_gl2.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\math_util.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\matrix.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\gl\model_gl.h">
+      <Filter>源文件\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\model_header.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\model_renderer.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\particle_renderer.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\text_renderer.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared_lib\include\graphics\vec.h">
+      <Filter>源文件\graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

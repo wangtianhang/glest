@@ -1,0 +1,210 @@
+﻿生成启动时间为 2016/4/30 19:08:25。
+     1>项目“F:\glestSVN\source\glestSolution\libglest\libglest.vcxproj”在节点 3 上(rebuild 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“Debug\libglest.lastbuildstate”。
+       InitializeBuildStatus:
+         正在创建“Debug\libglest.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D LUA_COMPAT_ALL /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\shared_lib\sources\graphics\buffer.cpp ..\..\shared_lib\sources\graphics\camera.cpp ..\..\shared_lib\sources\graphics\context.cpp ..\..\shared_lib\sources\graphics\font.cpp ..\..\shared_lib\sources\graphics\font_manager.cpp ..\..\shared_lib\sources\graphics\gl\context_gl.cpp ..\..\shared_lib\sources\graphics\gl\font_gl.cpp ..\..\shared_lib\sources\graphics\gl\model_renderer_gl.cpp ..\..\shared_lib\sources\graphics\gl\opengl.cpp ..\..\shared_lib\sources\graphics\gl\particle_renderer_gl.cpp ..\..\shared_lib\sources\graphics\gl\shader_gl.cpp ..\..\shared_lib\sources\graphics\gl\texture_gl.cpp ..\..\shared_lib\sources\graphics\gl\text_renderer_gl.cpp ..\..\shared_lib\sources\graphics\graphics_interface.cpp ..\..\shared_lib\sources\graphics\interpolation.cpp ..\..\shared_lib\sources\graphics\model.cpp ..\..\shared_lib\sources\graphics\model_manager.cpp ..\..\shared_lib\sources\graphics\particle.cpp ..\..\shared_lib\sources\graphics\pixmap.cpp ..\..\shared_lib\sources\graphics\quaternion.cpp ..\..\shared_lib\sources\graphics\shader.cpp ..\..\shared_lib\sources\graphics\shader_manager.cpp ..\..\shared_lib\sources\graphics\texture.cpp ..\..\shared_lib\sources\graphics\texture_manager.cpp ..\..\shared_lib\sources\lua\lua_script.cpp ..\..\shared_lib\sources\platform\win32\factory_repository.cpp ..\..\shared_lib\sources\platform\win32\gl_wrap.cpp ..\..\shared_lib\sources\platform\win32\platform_menu.cpp ..\..\shared_lib\sources\platform\win32\platform_util.cpp ..\..\shared_lib\sources\platform\win32\socket.cpp ..\..\shared_lib\sources\platform\win32\thread.cpp ..\..\shared_lib\sources\platform\win32\window.cpp ..\..\shared_lib\sources\platform\win32\window_gl.cpp ..\..\shared_lib\sources\sound\ds8\sound_player_ds8.cpp ..\..\shared_lib\sources\sound\sound.cpp ..\..\shared_lib\sources\sound\sound_file_loader.cpp ..\..\shared_lib\sources\sound\sound_interface.cpp ..\..\shared_lib\sources\sound\sound_player.cpp ..\..\shared_lib\sources\util\checksum.cpp ..\..\shared_lib\sources\util\conversion.cpp ..\..\shared_lib\sources\util\leak_dumper.cpp ..\..\shared_lib\sources\util\profiler.cpp ..\..\shared_lib\sources\util\properties.cpp ..\..\shared_lib\sources\util\random.cpp ..\..\shared_lib\sources\util\util.cpp ..\..\shared_lib\sources\xml\xml_parser.cpp
+         xml_parser.cpp
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(172): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(183): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(205): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(208): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(214): warning C4018: “>=”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(221): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(230): warning C4018: “>=”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(237): warning C4018: “>=”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(242): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(272): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(282): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(296): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\xml\xml_parser.cpp(365): warning C4018: “<”: 有符号/无符号不匹配
+         util.cpp
+     1>f:\glestsvn\source\shared_lib\sources\util\util.cpp(119): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : 参见“strncpy”的声明
+     1>f:\glestsvn\source\shared_lib\sources\util\util.cpp(162): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 参见“fopen”的声明
+         random.cpp
+         properties.cpp
+         profiler.cpp
+         leak_dumper.cpp
+         conversion.cpp
+     1>f:\glestsvn\source\shared_lib\sources\util\conversion.cpp(103): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : 参见“sprintf”的声明
+     1>f:\glestsvn\source\shared_lib\sources\util\conversion.cpp(109): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : 参见“sprintf”的声明
+     1>f:\glestsvn\source\shared_lib\sources\util\conversion.cpp(115): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : 参见“sprintf”的声明
+     1>f:\glestsvn\source\shared_lib\sources\util\conversion.cpp(121): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : 参见“sprintf”的声明
+         checksum.cpp
+     1>f:\glestsvn\source\shared_lib\sources\util\checksum.cpp(43): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\util\checksum.cpp(50): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 参见“fopen”的声明
+         sound_player.cpp
+         sound_interface.cpp
+         sound_file_loader.cpp
+     1>f:\glestsvn\source\shared_lib\sources\sound\sound_file_loader.cpp(118): warning C4244: “=”: 从“std::streamoff”转换到“Shared::Platform::uint32”，可能丢失数据
+     1>f:\glestsvn\source\shared_lib\sources\sound\sound_file_loader.cpp(124): warning C4244: “return”: 从“std::streamsize”转换到“Shared::Platform::uint32”，可能丢失数据
+     1>f:\glestsvn\source\shared_lib\sources\sound\sound_file_loader.cpp(140): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 参见“fopen”的声明
+         sound.cpp
+         sound_player_ds8.cpp
+     1>f:\glestsvn\source\shared_lib\sources\sound\ds8\sound_player_ds8.cpp(390): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\sound\ds8\sound_player_ds8.cpp(398): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\sound\ds8\sound_player_ds8.cpp(404): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\sound\ds8\sound_player_ds8.cpp(412): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\sound\ds8\sound_player_ds8.cpp(425): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\sound\ds8\sound_player_ds8.cpp(446): warning C4018: “<”: 有符号/无符号不匹配
+         window_gl.cpp
+         window.cpp
+         thread.cpp
+         socket.cpp
+         platform_util.cpp
+     1>f:\glestsvn\source\shared_lib\sources\platform\win32\platform_util.cpp(170): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : 参见“strcpy”的声明
+     1>f:\glestsvn\source\shared_lib\sources\platform\win32\platform_util.cpp(190): warning C4018: “<”: 有符号/无符号不匹配
+         platform_menu.cpp
+     1>f:\glestsvn\source\shared_lib\sources\platform\win32\platform_menu.cpp(27): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\platform\win32\platform_menu.cpp(38): warning C4018: “<”: 有符号/无符号不匹配
+         gl_wrap.cpp
+         正在生成代码...
+         正在编译...
+         factory_repository.cpp
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(98): warning C4250: “Shared::Graphics::Gl::VertexShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::end”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(88) : 参见“Shared::Graphics::Gl::ShaderGl::end”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(98): warning C4250: “Shared::Graphics::Gl::VertexShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::load”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(86) : 参见“Shared::Graphics::Gl::ShaderGl::load”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(98): warning C4250: “Shared::Graphics::Gl::VertexShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::compile”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(87) : 参见“Shared::Graphics::Gl::ShaderGl::compile”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(107): warning C4250: “Shared::Graphics::Gl::FragmentShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::end”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(88) : 参见“Shared::Graphics::Gl::ShaderGl::end”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(107): warning C4250: “Shared::Graphics::Gl::FragmentShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::load”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(86) : 参见“Shared::Graphics::Gl::ShaderGl::load”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(107): warning C4250: “Shared::Graphics::Gl::FragmentShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::compile”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(87) : 参见“Shared::Graphics::Gl::ShaderGl::compile”的声明
+         lua_script.cpp
+         texture_manager.cpp
+     1>f:\glestsvn\source\shared_lib\sources\graphics\texture_manager.cpp(37): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\texture_manager.cpp(43): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\texture_manager.cpp(59): warning C4018: “<”: 有符号/无符号不匹配
+         texture.cpp
+         shader_manager.cpp
+     1>f:\glestsvn\source\shared_lib\sources\graphics\shader_manager.cpp(30): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\shader_manager.cpp(36): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\shader_manager.cpp(45): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\shader_manager.cpp(50): warning C4018: “<”: 有符号/无符号不匹配
+         shader.cpp
+         quaternion.cpp
+         pixmap.cpp
+     1>f:\glestsvn\source\shared_lib\sources\graphics\pixmap.cpp(94): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 参见“fopen”的声明
+     1>f:\glestsvn\source\shared_lib\sources\graphics\pixmap.cpp(174): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 参见“fopen”的声明
+     1>f:\glestsvn\source\shared_lib\sources\graphics\pixmap.cpp(221): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 参见“fopen”的声明
+     1>f:\glestsvn\source\shared_lib\sources\graphics\pixmap.cpp(280): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 参见“fopen”的声明
+         particle.cpp
+         model_manager.cpp
+         model.cpp
+     1>f:\glestsvn\source\shared_lib\sources\graphics\model.cpp(180): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\model.cpp(281): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\model.cpp(285): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\model.cpp(309): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\model.cpp(335): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\model.cpp(341): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\model.cpp(347): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\glestsvn\source\shared_lib\sources\graphics\model.cpp(434): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 参见“fopen”的声明
+         interpolation.cpp
+         graphics_interface.cpp
+         text_renderer_gl.cpp
+         texture_gl.cpp
+         shader_gl.cpp
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(98): warning C4250: “Shared::Graphics::Gl::VertexShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::end”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(88) : 参见“Shared::Graphics::Gl::ShaderGl::end”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(98): warning C4250: “Shared::Graphics::Gl::VertexShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::load”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(86) : 参见“Shared::Graphics::Gl::ShaderGl::load”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(98): warning C4250: “Shared::Graphics::Gl::VertexShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::compile”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(87) : 参见“Shared::Graphics::Gl::ShaderGl::compile”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(107): warning C4250: “Shared::Graphics::Gl::FragmentShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::end”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(88) : 参见“Shared::Graphics::Gl::ShaderGl::end”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(107): warning C4250: “Shared::Graphics::Gl::FragmentShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::load”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(86) : 参见“Shared::Graphics::Gl::ShaderGl::load”的声明
+     1>f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(107): warning C4250: “Shared::Graphics::Gl::FragmentShaderGl”: 通过域控制继承“Shared::Graphics::Gl::ShaderGl::Shared::Graphics::Gl::ShaderGl::compile”
+                 f:\glestsvn\source\shared_lib\include\graphics\gl\shader_gl.h(87) : 参见“Shared::Graphics::Gl::ShaderGl::compile”的声明
+     1>f:\glestsvn\source\shared_lib\sources\graphics\gl\shader_gl.cpp(71): warning C4018: “<”: 有符号/无符号不匹配
+         particle_renderer_gl.cpp
+         opengl.cpp
+         model_renderer_gl.cpp
+     1>f:\glestsvn\source\shared_lib\sources\graphics\gl\model_renderer_gl.cpp(209): warning C4018: “<”: 有符号/无符号不匹配
+         font_gl.cpp
+         正在生成代码...
+         正在编译...
+         context_gl.cpp
+         font_manager.cpp
+         font.cpp
+     1>f:\glestsvn\source\shared_lib\sources\graphics\font.cpp(37): warning C4018: “<”: 有符号/无符号不匹配
+         context.cpp
+         camera.cpp
+         buffer.cpp
+         正在生成代码...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"F:\glestSVN\source\glestSolution\Debug\libglest.lib" /NOLOGO Debug\buffer.obj
+         Debug\camera.obj
+         Debug\context.obj
+         Debug\font.obj
+         Debug\font_manager.obj
+         Debug\context_gl.obj
+         Debug\font_gl.obj
+         Debug\model_renderer_gl.obj
+         Debug\opengl.obj
+         Debug\particle_renderer_gl.obj
+         Debug\shader_gl.obj
+         Debug\texture_gl.obj
+         Debug\text_renderer_gl.obj
+         Debug\graphics_interface.obj
+         Debug\interpolation.obj
+         Debug\model.obj
+         Debug\model_manager.obj
+         Debug\particle.obj
+         Debug\pixmap.obj
+         Debug\quaternion.obj
+         Debug\shader.obj
+         Debug\shader_manager.obj
+         Debug\texture.obj
+         Debug\texture_manager.obj
+         Debug\lua_script.obj
+         Debug\factory_repository.obj
+         Debug\gl_wrap.obj
+         Debug\platform_menu.obj
+         Debug\platform_util.obj
+         Debug\socket.obj
+         Debug\thread.obj
+         Debug\window.obj
+         Debug\window_gl.obj
+         Debug\sound_player_ds8.obj
+         Debug\sound.obj
+         Debug\sound_file_loader.obj
+         Debug\sound_interface.obj
+         Debug\sound_player.obj
+         Debug\checksum.obj
+         Debug\conversion.obj
+         Debug\leak_dumper.obj
+         Debug\profiler.obj
+         Debug\properties.obj
+         Debug\random.obj
+         Debug\util.obj
+         Debug\xml_parser.obj
+     1>profiler.obj : warning LNK4221: 此对象文件未定义任何之前未定义的公共符号，因此任何耗用此库的链接操作都不会使用此文件
+         libglest.vcxproj -> F:\glestSVN\source\glestSolution\Debug\libglest.lib
+       FinalizeBuildStatus:
+         正在删除文件“Debug\libglest.unsuccessfulbuild”。
+         正在对“Debug\libglest.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“F:\glestSVN\source\glestSolution\libglest\libglest.vcxproj”(rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:26.00

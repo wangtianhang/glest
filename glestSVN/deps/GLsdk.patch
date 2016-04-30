@@ -1,0 +1,74 @@
+diff -cr GLsdk.orig/GL/glprocs.c GLsdk/GL/glprocs.c
+*** GLsdk.orig/GL/glprocs.c	Tue Mar  9 13:25:10 2004
+--- GLsdk/GL/glprocs.c	Wed Feb 20 01:47:24 2008
+***************
+*** 15700,15706 ****
+  	return wglRestoreBufferRegionARB(hRegion, x, y, width, height, xSrc, ySrc);
+  }
+  
+! static const WINAPI InitGetExtensionsStringARB (HDC hdc)
+  {
+  	void *extproc;
+  
+--- 15700,15706 ----
+  	return wglRestoreBufferRegionARB(hRegion, x, y, width, height, xSrc, ySrc);
+  }
+  
+! static const char *WINAPI InitGetExtensionsStringARB (HDC hdc)
+  {
+  	void *extproc;
+  
+***************
+*** 15988,15994 ****
+  	wglDestroyDisplayColorTableEXT(id);
+  }
+  
+! static const WINAPI InitGetExtensionsStringEXT (void)
+  {
+  	void *extproc;
+  
+--- 15988,15994 ----
+  	wglDestroyDisplayColorTableEXT(id);
+  }
+  
+! static const char *WINAPI InitGetExtensionsStringEXT (void)
+  {
+  	void *extproc;
+  
+diff -cr GLsdk.orig/GL/glprocs.h GLsdk/GL/glprocs.h
+*** GLsdk.orig/GL/glprocs.h	Tue Mar  9 13:25:08 2004
+--- GLsdk/GL/glprocs.h	Wed Feb 20 01:44:20 2008
+***************
+*** 1041,1047 ****
+    VOID (WINAPI *DeleteBufferRegionARB) (HANDLE hRegion);
+    BOOL (WINAPI *SaveBufferRegionARB) (HANDLE hRegion, int x, int y, int width, int height);
+    BOOL (WINAPI *RestoreBufferRegionARB) (HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
+!   const (WINAPI *GetExtensionsStringARB) (HDC hdc);
+    BOOL (WINAPI *GetPixelFormatAttribivARB) (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
+    BOOL (WINAPI *GetPixelFormatAttribfvARB) (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
+    BOOL (WINAPI *ChoosePixelFormatARB) (HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
+--- 1041,1047 ----
+    VOID (WINAPI *DeleteBufferRegionARB) (HANDLE hRegion);
+    BOOL (WINAPI *SaveBufferRegionARB) (HANDLE hRegion, int x, int y, int width, int height);
+    BOOL (WINAPI *RestoreBufferRegionARB) (HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
+!   const char *(WINAPI *GetExtensionsStringARB) (HDC hdc);
+    BOOL (WINAPI *GetPixelFormatAttribivARB) (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
+    BOOL (WINAPI *GetPixelFormatAttribfvARB) (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
+    BOOL (WINAPI *ChoosePixelFormatARB) (HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
+***************
+*** 1059,1065 ****
+    GLboolean (WINAPI *LoadDisplayColorTableEXT) (const GLushort *table, GLuint length);
+    GLboolean (WINAPI *BindDisplayColorTableEXT) (GLushort id);
+    VOID (WINAPI *DestroyDisplayColorTableEXT) (GLushort id);
+!   const (WINAPI *GetExtensionsStringEXT) (void);
+    BOOL (WINAPI *MakeContextCurrentEXT) (HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+    HDC (WINAPI *GetCurrentReadDCEXT) (void);
+    HPBUFFEREXT (WINAPI *CreatePbufferEXT) (HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
+--- 1059,1065 ----
+    GLboolean (WINAPI *LoadDisplayColorTableEXT) (const GLushort *table, GLuint length);
+    GLboolean (WINAPI *BindDisplayColorTableEXT) (GLushort id);
+    VOID (WINAPI *DestroyDisplayColorTableEXT) (GLushort id);
+!   const char *(WINAPI *GetExtensionsStringEXT) (void);
+    BOOL (WINAPI *MakeContextCurrentEXT) (HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+    HDC (WINAPI *GetCurrentReadDCEXT) (void);
+    HPBUFFEREXT (WINAPI *CreatePbufferEXT) (HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
