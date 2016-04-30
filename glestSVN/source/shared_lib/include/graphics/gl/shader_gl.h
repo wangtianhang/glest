@@ -73,7 +73,7 @@ private:
 
 class ShaderGl: virtual public Shader{
 protected:
-	GLhandleARB handle;
+	unsigned int handle;
 	ShaderSource source;
 	bool inited;
 
@@ -81,7 +81,7 @@ public:
 	ShaderGl();
 		
 	const ShaderSource *getSource() const	{return &source;}
-	GLhandleARB getHandle() const			{return handle;}
+	unsigned int getHandle() const			{return handle;}
 
 	virtual void load(const string &path);
 	virtual bool compile(string &messages);

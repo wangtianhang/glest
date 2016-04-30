@@ -25,10 +25,10 @@ FactoryRepository &FactoryRepository::getInstance(){
 }
 
 GraphicsFactory *FactoryRepository::getGraphicsFactory(const string &name){
-	if(name == "OpenGL"){
-		return &graphicsFactoryGl;
-	}
-	else if(name == "OpenGL2"){
+// 	if(name == "OpenGL"){
+// 		return &graphicsFactoryGl;
+// 	}
+	if(name == "OpenGL2"){
 		return &graphicsFactoryGl2;
 	}
 

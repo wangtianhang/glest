@@ -31,7 +31,7 @@ namespace Shared{ namespace Graphics{ namespace Gl{
 //	class GraphicsFactoryGl
 // =====================================================
 
-class GraphicsFactoryGl: public GraphicsFactory{
+/*class GraphicsFactoryGl: public GraphicsFactory{
 public:
 	//context
 	virtual Context *newContext()					{return new ContextGl();}
@@ -58,7 +58,7 @@ public:
 	//particles
 	virtual ParticleManager *newParticleManager()	{return new ParticleManager();}
 	virtual ParticleRenderer *newParticleRenderer()	{return new ParticleRendererGl();}
-};
+};*/
 
 }}}//end namespace
 

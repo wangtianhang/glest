@@ -25,7 +25,7 @@ using std::string;
 
 using Shared::Graphics::GraphicsFactory;
 using Shared::Sound::SoundFactory;
-using Shared::Graphics::Gl::GraphicsFactoryGl;
+//using Shared::Graphics::Gl::GraphicsFactoryGl;
 using Shared::Graphics::Gl::GraphicsFactoryGl2;
 using Shared::Sound::Ds8::SoundFactoryDs8;
 
@@ -42,7 +42,7 @@ private:
 	void operator=(FactoryRepository &);
 
 private:
-	GraphicsFactoryGl graphicsFactoryGl;
+	//GraphicsFactoryGl graphicsFactoryGl;
 	GraphicsFactoryGl2 graphicsFactoryGl2;
 	SoundFactoryDs8 soundFactoryDs8;
 
