@@ -11,7 +11,7 @@
 
 #include "renderer.h"
 
-#include "texture_gl.h"
+//#include "texture_gl.h"
 #include "main_menu.h"
 #include "config.h"
 #include "components.h"
