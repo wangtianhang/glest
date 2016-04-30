@@ -35,7 +35,7 @@ private:
 
 private:
 	Attributes attributes;
-	GLhandleARB handle;
+	unsigned int handle;
 	VertexShader *vertexShader;
 	FragmentShader *fragmentShader;
 	bool inited;
@@ -43,7 +43,7 @@ private:
 public:
 	ShaderProgramGl();
 
-	GLhandleARB getHandle() const	{return handle;}
+	unsigned int getHandle() const	{return handle;}
 
 	virtual void init();
 	virtual void end();
