@@ -48,7 +48,7 @@ public:
 	//Texture1D *newTexture1D();
 	Texture2D *newTexture2D();
 	Texture3D *newTexture3D();
-	TextureCube *newTextureCube();
+	//TextureCube *newTextureCube();
 };
 
 

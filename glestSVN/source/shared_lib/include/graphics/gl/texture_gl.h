@@ -63,11 +63,11 @@ public:
 //	class TextureCubeGl
 // =====================================================
 
-class TextureCubeGl: public TextureCube, public TextureGl{
-public:
-	virtual void init(Filter filter, int maxAnisotropy= 1);
-	virtual void end();
-};
+// class TextureCubeGl: public TextureCube, public TextureGl{
+// public:
+// 	virtual void init(Filter filter, int maxAnisotropy= 1);
+// 	virtual void end();
+// };
 
 }}}//end namespace
 

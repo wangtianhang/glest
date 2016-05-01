@@ -32,7 +32,7 @@ public:
 	//virtual Texture1D *newTexture1D()				{return new Texture1DGl();}
 	virtual Texture2D *newTexture2D()				{return new Texture2DGl();}
 	virtual Texture3D *newTexture3D()				{return new Texture3DGl();}
-	virtual TextureCube *newTextureCube()			{return new TextureCubeGl();}
+	//virtual TextureCube *newTextureCube()			{return new TextureCubeGl();}
 	
 	//models
 	virtual ModelManager *newModelManager()			{return new ModelManager();}

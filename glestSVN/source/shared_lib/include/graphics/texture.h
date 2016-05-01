@@ -128,16 +128,16 @@ public:
 //	class TextureCube
 // =====================================================
 
-class TextureCube: public Texture{
-protected:
-	PixmapCube pixmap;
-
-public:
-	void loadFace(const string &path, int face);
-
-	PixmapCube *getPixmap()				{return &pixmap;}
-	const PixmapCube *getPixmap() const	{return &pixmap;}
-};
+// class TextureCube: public Texture{
+// protected:
+// 	PixmapCube pixmap;
+// 
+// public:
+// 	void loadFace(const string &path, int face);
+// 
+// 	PixmapCube *getPixmap()				{return &pixmap;}
+// 	const PixmapCube *getPixmap() const	{return &pixmap;}
+// };
 
 }}//end namespace
 
