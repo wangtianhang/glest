@@ -223,7 +223,12 @@ void Texture2DGl::init(Filter filter, int maxAnisotropy){
 // 				GL_TEXTURE_2D, glInternalFormat, 
 // 				pixmap.getW(), pixmap.getH(), 
 // 				glFormat, GL_UNSIGNED_BYTE, pixels);
-			glGenerateMipmap(GL_TEXTURE_2D);
+//			glGenerateMipmap(GL_TEXTURE_2D);
+			glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+			glTexImage2D(
+				GL_TEXTURE_2D, 0, glInternalFormat,
+				pixmap.getW(), pixmap.getH(),
+				0, glFormat, GL_UNSIGNED_BYTE, pixels);
 
 			int error = glGetError();
 		
@@ -317,79 +322,85 @@ void Texture3DGl::end(){
 //	class TextureCubeGl
 // =====================================================
 
-void TextureCubeGl::init(Filter filter, int maxAnisotropy){
-	assertGl();
-
-	if(!inited){
-		
-		//gen texture
-		glGenTextures(1, &handle);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, handle);
-			
-		//wrap
-		GLint wrap= toWrapModeGl(wrapMode);
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, wrap);
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, wrap);
-
-		//filter
-		if(mipmap){
-			GLuint glFilter= filter==fTrilinear? GL_LINEAR_MIPMAP_LINEAR: GL_LINEAR_MIPMAP_NEAREST;
-			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, glFilter);
-			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		}
-		else{
-			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		}
-
-		for(int i=0; i<6; ++i){
-			//params
-			const Pixmap2D *currentPixmap= pixmap.getFace(i);
-
-			GLint glFormat= toFormatGl(format, currentPixmap->getComponents());
-			GLint glInternalFormat= toInternalFormatGl(format, currentPixmap->getComponents());
-
-			//pixel init var
-			const uint8* pixels= pixmapInit? currentPixmap->getPixels(): NULL;
-			GLenum target= GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;
-
-			if(mipmap){
-// 				int error= gluBuild2DMipmaps(
-// 					target, glInternalFormat, 
-// 					currentPixmap->getW(), currentPixmap->getH(), 
-// 					glFormat, GL_UNSIGNED_BYTE, pixels);
-				glGenerateMipmap(target);
-
-				int error = glGetError();
-				
-				if(error!=0){
-					throw runtime_error("Error building texture cube mipmaps");
-				}
-			}
-			else{
-				glTexImage2D(
-					target, 0, glInternalFormat,
-					currentPixmap->getW(), currentPixmap->getH(),
-					0, glFormat, GL_UNSIGNED_BYTE, pixels);
-			}
-
-			if(glGetError()!=GL_NO_ERROR){
-				throw runtime_error("Error creating texture cube");
-			}
-		}
-		inited= true;
-
-	}
-
-	assertGl();
-}
-
-void TextureCubeGl::end(){
-	if(inited){
-		assertGl();
-		glDeleteTextures(1, &handle);
-		assertGl();
-	}
-}
+// void TextureCubeGl::init(Filter filter, int maxAnisotropy){
+// 	assertGl();
+// 
+// 	if(!inited){
+// 		
+// 		//gen texture
+// 		glGenTextures(1, &handle);
+// 		glBindTexture(GL_TEXTURE_CUBE_MAP, handle);
+// 			
+// 		//wrap
+// 		GLint wrap= toWrapModeGl(wrapMode);
+// 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, wrap);
+// 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, wrap);
+// 
+// 		//filter
+// 		if(mipmap){
+// 			GLuint glFilter= filter==fTrilinear? GL_LINEAR_MIPMAP_LINEAR: GL_LINEAR_MIPMAP_NEAREST;
+// 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, glFilter);
+// 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+// 
+// 			glTexParameterf(GL_TEXTURE_CUBE_MAP, GL_GENERATE_MIPMAP, GL_TRUE);
+// 		}
+// 		else{
+// 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+// 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+// 		}
+// 
+// 		for(int i=0; i<6; ++i){
+// 			//params
+// 			const Pixmap2D *currentPixmap= pixmap.getFace(i);
+// 
+// 			GLint glFormat= toFormatGl(format, currentPixmap->getComponents());
+// 			GLint glInternalFormat= toInternalFormatGl(format, currentPixmap->getComponents());
+// 
+// 			//pixel init var
+// 			const uint8* pixels= pixmapInit? currentPixmap->getPixels(): NULL;
+// 			GLenum target= GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;
+// 
+// 			if(mipmap){
+// // 				int error= gluBuild2DMipmaps(
+// // 					target, glInternalFormat, 
+// // 					currentPixmap->getW(), currentPixmap->getH(), 
+// // 					glFormat, GL_UNSIGNED_BYTE, pixels);
+// //				glGenerateMipmap(target);
+// 				glTexImage2D(
+// 					target, 0, glInternalFormat,
+// 					currentPixmap->getW(), currentPixmap->getH(),
+// 					0, glFormat, GL_UNSIGNED_BYTE, pixels);
+// 
+// 				int error = glGetError();
+// 				
+// 				if(error!=0){
+// 					throw runtime_error("Error building texture cube mipmaps");
+// 				}
+// 			}
+// 			else{
+// 				glTexImage2D(
+// 					target, 0, glInternalFormat,
+// 					currentPixmap->getW(), currentPixmap->getH(),
+// 					0, glFormat, GL_UNSIGNED_BYTE, pixels);
+// 			}
+// 
+// 			if(glGetError()!=GL_NO_ERROR){
+// 				throw runtime_error("Error creating texture cube");
+// 			}
+// 		}
+// 		inited= true;
+// 
+// 	}
+// 
+// 	assertGl();
+// }
+// 
+// void TextureCubeGl::end(){
+// 	if(inited){
+// 		assertGl();
+// 		glDeleteTextures(1, &handle);
+// 		assertGl();
+// 	}
+// }
 
 }}}//end namespace
