@@ -31,7 +31,7 @@ ShaderProgramGl::ShaderProgramGl(){
 void ShaderProgramGl::init(){
 	if(!inited){
 		assertGl();
-		handle= glCreateProgramObjectARB();
+		handle= glCreateProgram();
 		assertGl();
 		inited= true;
 	}
@@ -40,7 +40,7 @@ void ShaderProgramGl::init(){
 void ShaderProgramGl::end(){
 	if(inited){
 		assertGl();
-		glDeleteObjectARB(handle);
+		glDeleteProgram(handle);
 		assertGl();
 		inited= false;
 	}
@@ -62,8 +62,8 @@ bool ShaderProgramGl::link(string &messages){
 	messages= "Linking program: " + vss->getPathInfo() + ", " + fss->getPathInfo() + "\n";
 
 	//attach
-	glAttachObjectARB(handle, vertexShaderGl->getHandle());
-	glAttachObjectARB(handle, fragmentShaderGl->getHandle());
+	glAttachShader(handle, vertexShaderGl->getHandle());
+	glAttachShader(handle, fragmentShaderGl->getHandle());
 
 	assertGl();
 
@@ -71,14 +71,14 @@ bool ShaderProgramGl::link(string &messages){
 	for(int i=0; i<attributes.size(); ++i){
 		int a= attributes[i].second;
 		string s= attributes[i].first;
-		glBindAttribLocationARB(handle, attributes[i].second, attributes[i].first.c_str());
+		glBindAttribLocation(handle, attributes[i].second, attributes[i].first.c_str());
 	}
 
 	assertGl();
 
 	//link
-	glLinkProgramARB(handle);
-	glValidateProgramARB(handle);
+	glLinkProgram(handle);
+	glValidateProgram(handle);
 
 	assertGl();
 
@@ -115,43 +115,43 @@ void ShaderProgramGl::deactivate(){
 
 void ShaderProgramGl::setUniform(const string &name, int value){
 	assertGl();
-	glUniform1iARB(getLocation(name), value);
+	glUniform1i(getLocation(name), value);
 	assertGl();
 }
 
 void ShaderProgramGl::setUniform(const string &name, float value){
 	assertGl();
-	glUniform1fARB(getLocation(name), value);
+	glUniform1f(getLocation(name), value);
 	assertGl();
 }
 
 void ShaderProgramGl::setUniform(const string &name, const Vec2f &value){
 	assertGl();
-	glUniform2fvARB(getLocation(name), 1, value.ptr());
+	glUniform2fv(getLocation(name), 1, value.ptr());
 	assertGl();
 }
 
 void ShaderProgramGl::setUniform(const string &name, const Vec3f &value){
 	assertGl();
-	glUniform3fvARB(getLocation(name), 1, value.ptr());
+	glUniform3fv(getLocation(name), 1, value.ptr());
 	assertGl();
 }
 
 void ShaderProgramGl::setUniform(const string &name, const Vec4f &value){
 	assertGl();
-	glUniform4fvARB(getLocation(name), 1, value.ptr());
+	glUniform4fv(getLocation(name), 1, value.ptr());
 	assertGl();
 }
 
 void ShaderProgramGl::setUniform(const string &name, const Matrix3f &value){
 	assertGl();
-	glUniformMatrix3fvARB(getLocation(name), 1, GL_FALSE, value.ptr());
+	glUniformMatrix3fv(getLocation(name), 1, GL_FALSE, value.ptr());
 	assertGl();
 }
 
 void ShaderProgramGl::setUniform(const string &name, const Matrix4f &value){
 	assertGl();
-	glUniformMatrix4fvARB(getLocation(name), 1, GL_FALSE, value.ptr());
+	glUniformMatrix4fv(getLocation(name), 1, GL_FALSE, value.ptr());
 	assertGl();
 }
 
@@ -160,7 +160,7 @@ void ShaderProgramGl::bindAttribute(const string &name, int index){
 }
 
 GLint ShaderProgramGl::getLocation(const string &name){
-	GLint location= glGetUniformLocationARB(handle, name.c_str());
+	GLint location= glGetUniformLocation(handle, name.c_str());
 	if(location==-1){
 		throw runtime_error("Can't locate uniform: "+ name);
 	}
@@ -188,10 +188,10 @@ bool ShaderGl::compile(string &messages){
 	//load source
 	GLint length= source.getCode().size();
 	const GLcharARB *csource= source.getCode().c_str();
-	glShaderSourceARB(handle, 1, &csource, &length);
+	glShaderSource(handle, 1, &csource, &length);
 
 	//compile
-	glCompileShaderARB(handle);
+	glCompileShader(handle);
 	
 	//log
 	GLint logLength= 0;
@@ -212,7 +212,7 @@ bool ShaderGl::compile(string &messages){
 void ShaderGl::end(){
 	if(inited){
 		assertGl();
-		glDeleteObjectARB(handle);
+		glDeleteShader(handle);
 		assertGl();
 	}
 }
@@ -224,7 +224,7 @@ void ShaderGl::end(){
 void VertexShaderGl::init(){
 	if(!inited){
 		assertGl();
-		handle= glCreateShaderObjectARB(GL_VERTEX_SHADER_ARB);
+		handle= glCreateShader(GL_VERTEX_SHADER_ARB);
 		assertGl();
 		inited= true;
 	}
@@ -237,7 +237,7 @@ void VertexShaderGl::init(){
 void FragmentShaderGl::init(){
 	if(!inited){
 		assertGl();
-		handle= glCreateShaderObjectARB(GL_FRAGMENT_SHADER_ARB);
+		handle= glCreateShader(GL_FRAGMENT_SHADER_ARB);
 		assertGl();
 		inited= true;
 	}
