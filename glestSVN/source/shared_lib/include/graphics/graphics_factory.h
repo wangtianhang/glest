@@ -55,7 +55,7 @@ public:
 
 	//textures
 	virtual TextureManager *newTextureManager()		{return NULL;}
-	virtual Texture1D *newTexture1D()				{return NULL;}
+	//virtual Texture1D *newTexture1D()				{return NULL;}
 	virtual Texture2D *newTexture2D()				{return NULL;}
 	virtual Texture3D *newTexture3D()				{return NULL;}
 	virtual TextureCube *newTextureCube()			{return NULL;}

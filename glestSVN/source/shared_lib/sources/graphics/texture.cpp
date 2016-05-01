@@ -34,10 +34,10 @@ Texture::Texture(){
 //	class Texture1D
 // =====================================================
 
-void Texture1D::load(const string &path){
-	this->path= path;
-	pixmap.load(path);
-}
+// void Texture1D::load(const string &path){
+// 	this->path= path;
+// 	pixmap.load(path);
+// }
 
 // =====================================================
 //	class Texture2D

@@ -98,73 +98,73 @@ GLint toInternalFormatGl(Texture::Format format, int components){
 //	class Texture1DGl
 // =====================================================
 
-void Texture1DGl::init(Filter filter, int maxAnisotropy){
-	assertGl();
-
-	if(!inited){
-
-		//params
-		GLint wrap= toWrapModeGl(wrapMode);
-		GLint glFormat= toFormatGl(format, pixmap.getComponents());
-		GLint glInternalFormat= toInternalFormatGl(format, pixmap.getComponents());
-
-		//pixel init var
-		const uint8* pixels= pixmapInit? pixmap.getPixels(): NULL;
-
-		//gen texture
-		glGenTextures(1, &handle);
-		glBindTexture(GL_TEXTURE_1D, handle);
-
-		//wrap params
-		glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, wrap);
-
-		//maxAnisotropy
-		if(isGlExtensionSupported("GL_EXT_texture_filter_anisotropic")){
-			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_ANISOTROPY_EXT, maxAnisotropy);
-		}
-
-		if(mipmap){
-			GLuint glFilter= filter==fTrilinear? GL_LINEAR_MIPMAP_LINEAR: GL_LINEAR_MIPMAP_NEAREST;
-
-			//build mipmaps
-			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, glFilter);
-			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			int error= gluBuild1DMipmaps(
-				GL_TEXTURE_1D, glInternalFormat, pixmap.getW(),
-				glFormat, GL_UNSIGNED_BYTE, pixels);
-		
-			if(error!=0){
-				throw runtime_error("Error building texture 1D mipmaps");
-			}
-		}
-		else{
-			//build single texture
-			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			glTexImage1D(
-				GL_TEXTURE_1D, 0, glInternalFormat, pixmap.getW(), 
-				0, glFormat, GL_UNSIGNED_BYTE, pixels);
-
-			GLint error= glGetError();
-			if(error!=GL_NO_ERROR){
-				throw runtime_error("Error creating texture 1D");
-			}
-		}
-		inited= true;
-	}
-
-	assertGl();
-}
-
-void Texture1DGl::end(){
-	if(inited){
-		assertGl();
-		glDeleteTextures(1, &handle);
-		assertGl();
-	}
-}
+// void Texture1DGl::init(Filter filter, int maxAnisotropy){
+// 	assertGl();
+// 
+// 	if(!inited){
+// 
+// 		//params
+// 		GLint wrap= toWrapModeGl(wrapMode);
+// 		GLint glFormat= toFormatGl(format, pixmap.getComponents());
+// 		GLint glInternalFormat= toInternalFormatGl(format, pixmap.getComponents());
+// 
+// 		//pixel init var
+// 		const uint8* pixels= pixmapInit? pixmap.getPixels(): NULL;
+// 
+// 		//gen texture
+// 		glGenTextures(1, &handle);
+// 		glBindTexture(GL_TEXTURE_1D, handle);
+// 
+// 		//wrap params
+// 		glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, wrap);
+// 
+// 		//maxAnisotropy
+// 		if(isGlExtensionSupported("GL_EXT_texture_filter_anisotropic")){
+// 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_ANISOTROPY_EXT, maxAnisotropy);
+// 		}
+// 
+// 		if(mipmap){
+// 			GLuint glFilter= filter==fTrilinear? GL_LINEAR_MIPMAP_LINEAR: GL_LINEAR_MIPMAP_NEAREST;
+// 
+// 			//build mipmaps
+// 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, glFilter);
+// 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+// 
+// 			int error= gluBuild1DMipmaps(
+// 				GL_TEXTURE_1D, glInternalFormat, pixmap.getW(),
+// 				glFormat, GL_UNSIGNED_BYTE, pixels);
+// 		
+// 			if(error!=0){
+// 				throw runtime_error("Error building texture 1D mipmaps");
+// 			}
+// 		}
+// 		else{
+// 			//build single texture
+// 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+// 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+// 
+// 			glTexImage1D(
+// 				GL_TEXTURE_1D, 0, glInternalFormat, pixmap.getW(), 
+// 				0, glFormat, GL_UNSIGNED_BYTE, pixels);
+// 
+// 			GLint error= glGetError();
+// 			if(error!=GL_NO_ERROR){
+// 				throw runtime_error("Error creating texture 1D");
+// 			}
+// 		}
+// 		inited= true;
+// 	}
+// 
+// 	assertGl();
+// }
+// 
+// void Texture1DGl::end(){
+// 	if(inited){
+// 		assertGl();
+// 		glDeleteTextures(1, &handle);
+// 		assertGl();
+// 	}
+// }
 
 // =====================================================
 //	class Texture2DGl

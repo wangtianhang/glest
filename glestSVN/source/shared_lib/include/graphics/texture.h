@@ -83,16 +83,16 @@ public:
 //	class Texture1D
 // =====================================================
 
-class Texture1D: public Texture{
-protected:
-	Pixmap1D pixmap;
-
-public:
-	void load(const string &path);
-
-	Pixmap1D *getPixmap()				{return &pixmap;}
-	const Pixmap1D *getPixmap() const	{return &pixmap;}
-};
+// class Texture1D: public Texture{
+// protected:
+// 	Pixmap1D pixmap;
+// 
+// public:
+// 	void load(const string &path);
+// 
+// 	Pixmap1D *getPixmap()				{return &pixmap;}
+// 	const Pixmap1D *getPixmap() const	{return &pixmap;}
+// };
 
 // =====================================================
 //	class Texture2D
