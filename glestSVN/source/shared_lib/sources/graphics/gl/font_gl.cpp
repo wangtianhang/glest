@@ -51,27 +51,27 @@ void Font2DGl::end(){
 //	class Font3DGl
 // =====================================================
 
-void Font3DGl::init(){
-	assertGl();
-
-	if(!inited){
-		handle= glGenLists(charCount);
-		createGlFontOutlines(handle, type, width, depth, charCount, metrics);
-		inited= true;
-	}
-
-	assertGl();
-}
-
-void Font3DGl::end(){
-	assertGl();
-
-	if(inited){
-		assert(glIsList(handle));
-		glDeleteLists(handle, 1);
-	}
-
-	assertGl();
-}
+// void Font3DGl::init(){
+// 	assertGl();
+// 
+// 	if(!inited){
+// 		handle= glGenLists(charCount);
+// 		createGlFontOutlines(handle, type, width, depth, charCount, metrics);
+// 		inited= true;
+// 	}
+// 
+// 	assertGl();
+// }
+// 
+// void Font3DGl::end(){
+// 	assertGl();
+// 
+// 	if(inited){
+// 		assert(glIsList(handle));
+// 		glDeleteLists(handle, 1);
+// 	}
+// 
+// 	assertGl();
+// }
 
 }}}//end namespace

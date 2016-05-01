@@ -123,31 +123,31 @@ void createGlFontBitmaps(uint32 &base, const string &type, int size, int width, 
 	assert(err);
 }
 
-void createGlFontOutlines(uint32 &base, const string &type, int width, float depth, int charCount, FontMetrics &metrics){
-	HFONT font= CreateFont(
-		10, 0, 0, 0, width, 0, FALSE, FALSE, ANSI_CHARSET,
-		OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, 
-		DEFAULT_PITCH, type.c_str());
-
-	assert(font!=NULL);
-
-	GLYPHMETRICSFLOAT *glyphMetrics= new GLYPHMETRICSFLOAT[charCount];
-
-	HDC dc= wglGetCurrentDC();
-	SelectObject(dc, font);
-	BOOL err= wglUseFontOutlines(dc, 0, charCount, base, 1000, depth, WGL_FONT_POLYGONS, glyphMetrics);
-		
-	//load metrics
-	metrics.setHeight(glyphMetrics['a'].gmfBlackBoxY);
-	for(int i=0; i<charCount; ++i){
-		metrics.setWidth(i, glyphMetrics[i].gmfCellIncX);
-	}
-
-	DeleteObject(font);
-	delete [] glyphMetrics;
-
-	assert(err);
-}
+// void createGlFontOutlines(uint32 &base, const string &type, int width, float depth, int charCount, FontMetrics &metrics){
+// 	HFONT font= CreateFont(
+// 		10, 0, 0, 0, width, 0, FALSE, FALSE, ANSI_CHARSET,
+// 		OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, 
+// 		DEFAULT_PITCH, type.c_str());
+// 
+// 	assert(font!=NULL);
+// 
+// 	GLYPHMETRICSFLOAT *glyphMetrics= new GLYPHMETRICSFLOAT[charCount];
+// 
+// 	HDC dc= wglGetCurrentDC();
+// 	SelectObject(dc, font);
+// 	BOOL err= wglUseFontOutlines(dc, 0, charCount, base, 1000, depth, WGL_FONT_POLYGONS, glyphMetrics);
+// 		
+// 	//load metrics
+// 	metrics.setHeight(glyphMetrics['a'].gmfBlackBoxY);
+// 	for(int i=0; i<charCount; ++i){
+// 		metrics.setWidth(i, glyphMetrics[i].gmfCellIncX);
+// 	}
+// 
+// 	DeleteObject(font);
+// 	delete [] glyphMetrics;
+// 
+// 	assert(err);
+// }
 
 const char *getPlatformExtensions(const PlatformContextGl *pcgl){
 	typedef const char* (WINAPI * PROCTYPE) (HDC hdc);

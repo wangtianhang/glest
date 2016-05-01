@@ -68,8 +68,8 @@ Font2D::Font2D(){
 //	class Font3D
 // ===============================================
 
-Font3D::Font3D(){
-	depth= 10.f;
-}
+// Font3D::Font3D(){
+// 	depth= 10.f;
+// }
 
 }}//end namespace
