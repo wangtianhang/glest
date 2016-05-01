@@ -99,7 +99,7 @@ GLint toInternalFormatGl(Texture::Format format, int components){
 		return GL_ALPHA8_OES;
 	case Texture::fRgb:
 		//todo opengles没有
-		return GL_RGBA8_OES;
+		return GL_RGB8_OES;
 	case Texture::fRgba:
 		//todo opengles没有
 		return GL_RGBA8_OES;
