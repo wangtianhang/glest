@@ -83,10 +83,16 @@ bool ShaderProgramGl::link(string &messages){
 	assertGl();
 
 	//log
-	GLint logLength= 0;
-	glGetObjectParameterivARB(handle, GL_OBJECT_INFO_LOG_LENGTH_ARB, &logLength);
-	char *buffer= new char[logLength+1];
-	glGetInfoLogARB(handle, logLength+1, NULL, buffer);
+	//GLint logLength= 0;
+	//glGetObjectParameterivARB(handle, GL_OBJECT_INFO_LOG_LENGTH_ARB, &logLength);
+	//char *buffer= new char[logLength+1];
+	//glGetInfoLogARB(handle, logLength+1, NULL, buffer);
+	//messages+= buffer;
+	//delete [] buffer;
+	GLint logMaxLength = 255;
+	char *buffer= new char[logMaxLength+1];
+	GLint logLength = 0;
+	glGetProgramInfoLog(handle, logMaxLength, &logLength, buffer);
 	messages+= buffer;
 	delete [] buffer;
 
@@ -94,7 +100,8 @@ bool ShaderProgramGl::link(string &messages){
 
 	//status
 	GLint status= false;
-	glGetObjectParameterivARB(handle, GL_OBJECT_LINK_STATUS_ARB, &status);
+	//glGetObjectParameterivARB(handle, GL_OBJECT_LINK_STATUS_ARB, &status);
+	glGetProgramiv(handle, GL_LINK_STATUS, &status);
 	
 	assertGl();
 
@@ -103,13 +110,13 @@ bool ShaderProgramGl::link(string &messages){
 
 void ShaderProgramGl::activate(){
 	assertGl();
-	glUseProgramObjectARB(handle);
+	glUseProgram(handle);
 	assertGl();
 }
 
 void ShaderProgramGl::deactivate(){
 	assertGl();
-	glUseProgramObjectARB(0);
+	glUseProgram(0);
 	assertGl();
 }
 
@@ -187,23 +194,30 @@ bool ShaderGl::compile(string &messages){
 
 	//load source
 	GLint length= source.getCode().size();
-	const GLcharARB *csource= source.getCode().c_str();
+	const char *csource= source.getCode().c_str();
 	glShaderSource(handle, 1, &csource, &length);
 
 	//compile
 	glCompileShader(handle);
 	
 	//log
-	GLint logLength= 0;
-	glGetObjectParameterivARB(handle, GL_OBJECT_INFO_LOG_LENGTH_ARB, &logLength);
-	char *buffer= new char[logLength+1];
-	glGetInfoLogARB(handle, logLength+1, NULL, buffer);
+// 	GLint logLength= 0;
+// 	glGetObjectParameterivARB(handle, GL_OBJECT_INFO_LOG_LENGTH_ARB, &logLength);
+// 	char *buffer= new char[logLength+1];
+// 	glGetInfoLogARB(handle, logLength+1, NULL, buffer);
+// 	messages+= buffer;
+// 	delete [] buffer;
+	GLint logMaxLength = 255;
+	char *buffer= new char[logMaxLength+1];
+	GLint logLength = 0;
+	glGetProgramInfoLog(handle, logMaxLength, &logLength, buffer);
 	messages+= buffer;
 	delete [] buffer;
 
 	//status
 	GLint status= false;
-	glGetObjectParameterivARB(handle, GL_OBJECT_COMPILE_STATUS_ARB, &status);
+	//glGetObjectParameterivARB(handle, GL_OBJECT_COMPILE_STATUS_ARB, &status);
+	glGetShaderiv(handle, GL_COMPILE_STATUS, &status);
 	assertGl();
 
 	return status!=0;
@@ -224,7 +238,7 @@ void ShaderGl::end(){
 void VertexShaderGl::init(){
 	if(!inited){
 		assertGl();
-		handle= glCreateShader(GL_VERTEX_SHADER_ARB);
+		handle= glCreateShader(GL_VERTEX_SHADER);
 		assertGl();
 		inited= true;
 	}
@@ -237,7 +251,7 @@ void VertexShaderGl::init(){
 void FragmentShaderGl::init(){
 	if(!inited){
 		assertGl();
-		handle= glCreateShader(GL_FRAGMENT_SHADER_ARB);
+		handle= glCreateShader(GL_FRAGMENT_SHADER);
 		assertGl();
 		inited= true;
 	}
