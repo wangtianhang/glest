@@ -86,11 +86,11 @@ Texture3D *TextureManager::newTexture3D(){
 }
 
 
-TextureCube *TextureManager::newTextureCube(){
-	TextureCube *textureCube= GraphicsInterface::getInstance().getFactory()->newTextureCube();
-	textures.push_back(textureCube);
-
-	return textureCube;
-}
+// TextureCube *TextureManager::newTextureCube(){
+// 	TextureCube *textureCube= GraphicsInterface::getInstance().getFactory()->newTextureCube();
+// 	textures.push_back(textureCube);
+// 
+// 	return textureCube;
+// }
 
 }}//end namespace

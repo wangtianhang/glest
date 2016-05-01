@@ -61,9 +61,9 @@ void Texture3D::loadSlice(const string &path, int slice){
 //	class TextureCube
 // =====================================================
 
-void TextureCube::loadFace(const string &path, int face){
-	this->path= path;
-	pixmap.loadFace(path, face);
-}
+// void TextureCube::loadFace(const string &path, int face){
+// 	this->path= path;
+// 	pixmap.loadFace(path, face);
+// }
 
 }}//end namespace
