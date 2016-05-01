@@ -40,18 +40,18 @@ public:
 //	class TextRenderer3DGl
 // =====================================================
 
-class TextRenderer3DGl: public TextRenderer3D{
-private:
-	const Font3DGl *font;
-	bool rendering;
-
-public:
-	TextRenderer3DGl();
-
-	virtual void begin(const Font3D *font);
-	virtual void render(const string &text, float x, float y, float size, bool centered);
-	virtual void end();
-};
+// class TextRenderer3DGl: public TextRenderer3D{
+// private:
+// 	const Font3DGl *font;
+// 	bool rendering;
+// 
+// public:
+// 	TextRenderer3DGl();
+// 
+// 	virtual void begin(const Font3D *font);
+// 	virtual void render(const string &text, float x, float y, float size, bool centered);
+// 	virtual void end();
+// };
 
 }}}//end namespace
 

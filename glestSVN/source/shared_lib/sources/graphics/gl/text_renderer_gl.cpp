@@ -80,63 +80,63 @@ void TextRenderer2DGl::end(){
 //	class TextRenderer3DGl
 // =====================================================
 
-TextRenderer3DGl::TextRenderer3DGl(){
-	rendering= false;
-}
-
-void TextRenderer3DGl::begin(const Font3D *font){
-	assert(!rendering);
-	rendering= true;
-	
-	this->font= static_cast<const Font3DGl*>(font);
-
-	assertGl();
-
-	//load color
-	glPushAttrib(GL_TRANSFORM_BIT);
-
-	assertGl();
-}
-
-void TextRenderer3DGl::render(const string &text, float  x, float y, float size, bool centered){
-	assert(rendering);
-	
-	assertGl();
-
-	const unsigned char *utext= reinterpret_cast<const unsigned char*>(text.c_str());
-
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glPushAttrib(GL_POLYGON_BIT);
-	float scale= size/10.f;
-	if(centered){
-		const FontMetrics *metrics= font->getMetrics();
-		glTranslatef(x-scale*metrics->getTextWidth(text)/2.f, y-scale*metrics->getHeight()/2.f, 0);
-	}
-	else{
-		glTranslatef(x-scale, y-scale, 0);
-	}
-	glScalef(scale, scale, scale);
-                     
-	for (int i=0; utext[i]!='\0'; ++i) {
-		glCallList(font->getHandle()+utext[i]);
-	}
-
-	glPopMatrix();
-	glPopAttrib();
-
-	assertGl();
-}
-
-void TextRenderer3DGl::end(){
-	assert(rendering);
-	rendering= false;
-
-	assertGl();
-
-	glPopAttrib();
-
-	assertGl();
-}
+// TextRenderer3DGl::TextRenderer3DGl(){
+// 	rendering= false;
+// }
+// 
+// void TextRenderer3DGl::begin(const Font3D *font){
+// 	assert(!rendering);
+// 	rendering= true;
+// 	
+// 	this->font= static_cast<const Font3DGl*>(font);
+// 
+// 	assertGl();
+// 
+// 	//load color
+// 	glPushAttrib(GL_TRANSFORM_BIT);
+// 
+// 	assertGl();
+// }
+// 
+// void TextRenderer3DGl::render(const string &text, float  x, float y, float size, bool centered){
+// 	assert(rendering);
+// 	
+// 	assertGl();
+// 
+// 	const unsigned char *utext= reinterpret_cast<const unsigned char*>(text.c_str());
+// 
+// 	glMatrixMode(GL_MODELVIEW);
+// 	glPushMatrix();
+// 	glPushAttrib(GL_POLYGON_BIT);
+// 	float scale= size/10.f;
+// 	if(centered){
+// 		const FontMetrics *metrics= font->getMetrics();
+// 		glTranslatef(x-scale*metrics->getTextWidth(text)/2.f, y-scale*metrics->getHeight()/2.f, 0);
+// 	}
+// 	else{
+// 		glTranslatef(x-scale, y-scale, 0);
+// 	}
+// 	glScalef(scale, scale, scale);
+//                      
+// 	for (int i=0; utext[i]!='\0'; ++i) {
+// 		glCallList(font->getHandle()+utext[i]);
+// 	}
+// 
+// 	glPopMatrix();
+// 	glPopAttrib();
+// 
+// 	assertGl();
+// }
+// 
+// void TextRenderer3DGl::end(){
+// 	assert(rendering);
+// 	rendering= false;
+// 
+// 	assertGl();
+// 
+// 	glPopAttrib();
+// 
+// 	assertGl();
+// }
 
 }}}//end namespace
