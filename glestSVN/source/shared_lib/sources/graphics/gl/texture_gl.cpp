@@ -25,14 +25,16 @@ using namespace Platform;
 GLint toWrapModeGl(Texture::WrapMode wrapMode){
 	switch(wrapMode){
 	case Texture::wmClamp:
-		return GL_CLAMP;
+		// todo ºÊ»›opengles
+		return GL_CLAMP_TO_EDGE;
 	case Texture::wmRepeat:
 		return GL_REPEAT;
 	case Texture::wmClampToEdge:
 		return GL_CLAMP_TO_EDGE;
 	default:
 		assert(false);
-		return GL_CLAMP;
+		// todo ºÊ»›opengles
+		return GL_CLAMP_TO_EDGE;
 	}
 }
 
