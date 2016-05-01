@@ -205,10 +205,19 @@ void Texture2DGl::init(Filter filter, int maxAnisotropy){
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, glFilter);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-			int error= gluBuild2DMipmaps(
-				GL_TEXTURE_2D, glInternalFormat, 
-				pixmap.getW(), pixmap.getH(), 
-				glFormat, GL_UNSIGNED_BYTE, pixels);
+// 			int error= gluBuild2DMipmaps(
+// 				GL_TEXTURE_2D, glInternalFormat, 
+// 				pixmap.getW(), pixmap.getH(), 
+// 				glFormat, GL_UNSIGNED_BYTE, pixels);
+
+//			glGenerateMipmap(GL_TEXTURE_2D);
+
+			glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+			glTexImage2D(
+				GL_TEXTURE_2D, 0, glInternalFormat,
+				pixmap.getW(), pixmap.getH(),
+				0, glFormat, GL_UNSIGNED_BYTE, pixels);
+			int error = glGetError();
 		
 			if(error!=0){
 				throw runtime_error("Error building texture 2D mipmaps");
@@ -267,13 +276,13 @@ void Texture3DGl::init(Filter filter, int maxAnisotropy){
 		//wrap params
 		glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, wrap);
 		glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, wrap);
-		glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, wrap);
+		glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R_EXT, wrap);
 
 		//build single texture
 		glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-		glTexImage3D(
+		glTexImage3DEXT(
 			GL_TEXTURE_3D, 0, glInternalFormat,
 			pixmap.getW(), pixmap.getH(), pixmap.getD(),
 			0, glFormat, GL_UNSIGNED_BYTE, pixels);
@@ -319,6 +328,8 @@ void TextureCubeGl::init(Filter filter, int maxAnisotropy){
 			GLuint glFilter= filter==fTrilinear? GL_LINEAR_MIPMAP_LINEAR: GL_LINEAR_MIPMAP_NEAREST;
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, glFilter);
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glTexParameterf(GL_TEXTURE_CUBE_MAP, GL_GENERATE_MIPMAP, GL_TRUE);
 		}
 		else{
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -337,10 +348,19 @@ void TextureCubeGl::init(Filter filter, int maxAnisotropy){
 			GLenum target= GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;
 
 			if(mipmap){
-				int error= gluBuild2DMipmaps(
-					target, glInternalFormat, 
-					currentPixmap->getW(), currentPixmap->getH(), 
-					glFormat, GL_UNSIGNED_BYTE, pixels);
+// 				int error= gluBuild2DMipmaps(
+// 					target, glInternalFormat, 
+// 					currentPixmap->getW(), currentPixmap->getH(), 
+// 					glFormat, GL_UNSIGNED_BYTE, pixels);
+
+//				glGenerateMipmap(target);
+
+
+				glTexImage2D(
+					target, 0, glInternalFormat,
+					currentPixmap->getW(), currentPixmap->getH(),
+					0, glFormat, GL_UNSIGNED_BYTE, pixels);
+				int error = glGetError();
 				
 				if(error!=0){
 					throw runtime_error("Error building texture cube mipmaps");
