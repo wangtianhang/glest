@@ -70,7 +70,7 @@ public:
 	virtual TextRenderer2D *newTextRenderer2D()		{return NULL;}
 	virtual TextRenderer3D *newTextRenderer3D()		{return NULL;}
 	virtual Font2D *newFont2D()						{return NULL;}
-	virtual Font3D *newFont3D()						{return NULL;}
+	//virtual Font3D *newFont3D()						{return NULL;}
 
 	//particles
 	virtual ParticleManager *newParticleManager()	{return NULL;}

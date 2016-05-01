@@ -94,16 +94,16 @@ public:
 //	class Font3D
 // =====================================================
 
-class Font3D: public Font{
-protected:
-	float depth;
-
-public:
-	Font3D();
-	
-	float getDepth() const			{return depth;}
-	void setDepth(float depth)		{this->depth= depth;}
-};
+// class Font3D: public Font{
+// protected:
+// 	float depth;
+// 
+// public:
+// 	Font3D();
+// 	
+// 	float getDepth() const			{return depth;}
+// 	void setDepth(float depth)		{this->depth= depth;}
+// };
 
 }}//end namespace
 

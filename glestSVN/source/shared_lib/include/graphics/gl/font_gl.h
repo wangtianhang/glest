@@ -47,11 +47,11 @@ public:
 ///	OpenGL outline font
 // =====================================================
 
-class Font3DGl: public Font3D, public FontGl{
-public:
-	virtual void init();
-	virtual void end();
-};
+// class Font3DGl: public Font3D, public FontGl{
+// public:
+// 	virtual void init();
+// 	virtual void end();
+// };
 
 }}}//end namespace
 

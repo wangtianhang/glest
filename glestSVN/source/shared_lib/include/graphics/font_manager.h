@@ -37,7 +37,7 @@ public:
 	virtual ~FontManager();
 
 	Font2D *newFont2D();
-	Font3D *newFont3D();
+	//Font3D *newFont3D();
 
 	void init();
 	void end();

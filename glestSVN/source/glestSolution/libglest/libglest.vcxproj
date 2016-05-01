@@ -72,8 +72,6 @@
     <ClInclude Include="..\..\shared_lib\include\graphics\font_manager.h" />
     <ClInclude Include="..\..\shared_lib\include\graphics\gl\context_gl.h" />
     <ClInclude Include="..\..\shared_lib\include\graphics\gl\font_gl.h" />
-    <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_basic_gl.h" />
-    <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_gl.h" />
     <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_gl2.h" />
     <ClInclude Include="..\..\shared_lib\include\graphics\gl\model_gl.h" />
     <ClInclude Include="..\..\shared_lib\include\graphics\gl\model_renderer_gl.h" />

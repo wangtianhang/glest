@@ -341,12 +341,6 @@
     <ClInclude Include="..\..\shared_lib\include\graphics\graphics_factory.h">
       <Filter>源文件\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_basic_gl.h">
-      <Filter>源文件\graphics\gl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_gl.h">
-      <Filter>源文件\graphics\gl</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\shared_lib\include\graphics\gl\graphics_factory_gl2.h">
       <Filter>源文件\graphics\gl</Filter>
     </ClInclude>
