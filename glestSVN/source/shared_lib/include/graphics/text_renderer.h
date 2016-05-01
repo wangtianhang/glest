@@ -38,14 +38,14 @@ public:
 //	class TextRenderer3D
 // =====================================================
 
-class TextRenderer3D{
-public:	
-	virtual ~TextRenderer3D(){};
-
-	virtual void begin(const Font3D *font)= 0;
-	virtual void render(const string &text, float x, float y, float size, bool centered= false)= 0;
-	virtual void end()= 0;
-};
+// class TextRenderer3D{
+// public:	
+// 	virtual ~TextRenderer3D(){};
+// 
+// 	virtual void begin(const Font3D *font)= 0;
+// 	virtual void render(const string &text, float x, float y, float size, bool centered= false)= 0;
+// 	virtual void end()= 0;
+// };
 
 }}//end namespace
 

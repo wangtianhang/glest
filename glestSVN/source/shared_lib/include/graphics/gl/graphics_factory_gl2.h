@@ -42,7 +42,7 @@ public:
 	//text
 	virtual FontManager *newFontManager()			{return new FontManager();}
 	virtual TextRenderer2D *newTextRenderer2D()		{return new TextRenderer2DGl();}
-	virtual TextRenderer3D *newTextRenderer3D()		{return new TextRenderer3DGl();}
+	//virtual TextRenderer3D *newTextRenderer3D()		{return new TextRenderer3DGl();}
 	virtual Font2D *newFont2D()						{return new Font2DGl();}
 	virtual Font3D *newFont3D()						{return new Font3DGl();}
 
