@@ -37,11 +37,11 @@ const char *getGlRenderer();
 const char *getGlVendor();
 const char *getGlExtensions();
 const char *getGlPlatformExtensions();
-int getGlMaxLights();
+//int getGlMaxLights();
 int getGlMaxTextureSize();
 int getGlMaxTextureUnits();
-int getGlModelviewMatrixStackDepth();
-int getGlProjectionMatrixStackDepth();
+//int getGlModelviewMatrixStackDepth();
+//int getGlProjectionMatrixStackDepth();
 void checkGlExtension(const char *extensionName);
 
 void inline _assertGl(const char *file, int line){
