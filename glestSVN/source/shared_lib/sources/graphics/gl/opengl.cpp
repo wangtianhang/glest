@@ -125,7 +125,7 @@ int getGlMaxTextureSize(){
 
 int getGlMaxTextureUnits(){
 	int i;
-	glGetIntegerv(GL_MAX_TEXTURE_UNITS, &i);
+	glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &i);
 	return i;	
 }
 

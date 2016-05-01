@@ -205,18 +205,26 @@ void Texture2DGl::init(Filter filter, int maxAnisotropy){
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, glFilter);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+			// 方法一
 // 			int error= gluBuild2DMipmaps(
 // 				GL_TEXTURE_2D, glInternalFormat, 
 // 				pixmap.getW(), pixmap.getH(), 
 // 				glFormat, GL_UNSIGNED_BYTE, pixels);
 
-//			glGenerateMipmap(GL_TEXTURE_2D);
+			// 方法2
+// 			glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+// 			glTexImage2D(
+// 				GL_TEXTURE_2D, 0, glInternalFormat,
+// 				pixmap.getW(), pixmap.getH(),
+// 				0, glFormat, GL_UNSIGNED_BYTE, pixels);
 
-			glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+			// 方法3
 			glTexImage2D(
 				GL_TEXTURE_2D, 0, glInternalFormat,
 				pixmap.getW(), pixmap.getH(),
 				0, glFormat, GL_UNSIGNED_BYTE, pixels);
+			glGenerateMipmap(GL_TEXTURE_2D);
+
 			int error = glGetError();
 		
 			if(error!=0){
