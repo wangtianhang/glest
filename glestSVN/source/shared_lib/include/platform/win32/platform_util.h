@@ -113,6 +113,9 @@ void showCursor(bool b);
 bool isKeyDown(int virtualKey);
 string getCommandLine();
 
+void CheckWindowsError();
+
+
 }}//end namespace
 
 #endif

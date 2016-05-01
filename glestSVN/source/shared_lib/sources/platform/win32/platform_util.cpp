@@ -262,4 +262,27 @@ bool isKeyDown(int virtualKey){
 	return (GetKeyState(virtualKey) & 0x8000) != 0;
 }
 
+void CheckWindowsError()
+{
+
+	int errorNo = GetLastError();
+	if(errorNo != 0)
+	{
+		LPSTR lpBuffer;    
+		FormatMessage ( FORMAT_MESSAGE_ALLOCATE_BUFFER  | 
+			FORMAT_MESSAGE_IGNORE_INSERTS  | 
+			FORMAT_MESSAGE_FROM_SYSTEM,
+			NULL,
+			errorNo, // 此乃错误代码，通常在程序中可由 GetLastError()得之
+			LANG_NEUTRAL,
+			(LPTSTR) & lpBuffer,
+			0 ,
+			NULL );
+		//  Free the buffer.
+		MessageBox(NULL, lpBuffer, NULL, 0);
+		LocalFree (lpBuffer);
+	}
+
+}
+
 }}//end namespace
