@@ -348,7 +348,7 @@ bool setupEGLContext(EGLDisplay eglDisplay, EGLConfig eglConfig, EGLSurface eglS
 \return	Whether the function succeeds or not.
 \brief	Initializes shaders, buffers and other state required to begin rendering with OpenGL ES
 ***********************************************************************************************************************/
-bool initializeBuffer(GLuint& vertexBuffer, HWND nativeWindow)
+bool initializeBuffer(GLuint& vertexBuffer, HWND nativeWindow, GLfloat * vertexData, int vertexNum)
 {
 	//	Concept: Vertices
 	//	When rendering a polygon or model to screen, OpenGL ES has to be told where to draw the object, and more fundamentally what shape
@@ -365,12 +365,7 @@ bool initializeBuffer(GLuint& vertexBuffer, HWND nativeWindow)
 	//	a buffer and giving it some data we can tell the GPU how to render a triangle.
 	
 
-	// Vertex data containing the positions of each point of the triangle
-	GLfloat vertexData[] = { 
-							-0.4f, -0.4f, 0.0f, // Bottom Left
-	                         0.4f, -0.4f, 0.0f, // Bottom Right
-	                         0.0f, 0.4f, 0.0f
-	                       }; // Top Middle
+
 
 	// Generate a buffer object
 	//vertexBuffer = 100;
@@ -391,7 +386,7 @@ bool initializeBuffer(GLuint& vertexBuffer, HWND nativeWindow)
 	//	Set the buffer's size, data and usage
 	//	Note the last argument - GL_STATIC_DRAW. This tells the driver that we intend to read from the buffer on the GPU, and don't intend
 	//	to modify the data until we're done with it.
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData) * vertexNum, vertexData, GL_STATIC_DRAW);
 
 	if (!testGLError(nativeWindow, "glBufferData"))	{	return false;	}
 	return true;
@@ -559,7 +554,7 @@ bool initializeShaders(GLuint& fragmentShader, GLuint& vertexShader, GLuint& sha
 \return	Whether the function succeeds or not.
 \brief	Renders the scene to the framebuffer. Usually called within a loop.
 ***********************************************************************************************************************/
-bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurface, HWND nativeWindow)
+bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurface, HWND nativeWindow, int vertexBuffer, float * vertexData, int vertexNum)
 {
 	// The message handler setup for the window system will signal this variable when the window is closed, so close the application.
 	if (HasUserQuit){	return false;	}
@@ -597,6 +592,9 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	{
 		return false;
 	}
+
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData) * vertexNum, vertexData, GL_STATIC_DRAW);
 
 	// Enable the user-defined vertex array
 	glEnableVertexAttribArray(VertexArray);
@@ -710,6 +708,15 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	// A vertex buffer object to store our model data.
 	GLuint	vertexBuffer = 0;
 
+	// Vertex data containing the positions of each point of the triangle
+	GLfloat vertexData[] = { 
+		-0.4f, -0.4f, 0.0f, // Bottom Left
+		0.4f, -0.4f, 0.0f, // Bottom Right
+		0.0f, 0.4f, 0.0f
+	}; // Top Middle
+
+	int vertexNum = 9;
+
 	// Setup the windowing system, getting a window and a display
 	if (!createWindowAndDisplay(applicationInstance, nativeWindow, deviceContext)){	goto cleanup; }
 
@@ -726,7 +733,7 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	if (!setupEGLContext(eglDisplay, eglConfig, eglSurface, eglContext, nativeWindow)){ goto cleanup; }
 
 	// Initialize the vertex data in the application
-	if (!initializeBuffer(vertexBuffer, nativeWindow)){ goto cleanup; }
+	if (!initializeBuffer(vertexBuffer, nativeWindow, vertexData, vertexNum)){ goto cleanup; }
 
 	// Initialize the fragment and vertex shaders used in the application
 	if (!initializeShaders(fragmentShader, vertexShader, shaderProgram, nativeWindow)){ goto cleanup; }
@@ -735,7 +742,7 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	// Renders a triangle for 800 frames using the state setup in the previous function
 	for (int i = 0; i < 800; ++i)
 	{
-		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow))	{	break;	}
+		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow, vertexBuffer, vertexData, vertexNum))	{	break;	}
 	}
 
 	//InitFreeType();
