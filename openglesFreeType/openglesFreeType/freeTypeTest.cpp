@@ -26,12 +26,28 @@ struct font_t {
 	int initialized;
 };
 
-font_t * g_font;
+// typedef struct
+// {
+// 	GLuint programObject;
+// 
+// } UserData;
+
+font_t * g_font = NULL;
 int g_charCount = 128;
 int g_num_segment_x = 16;
 int g_num_segment_y = 8;
-int g_surface_width;
-int g_surface_height;
+int g_surface_width = 0;
+int g_surface_height = 0;
+GLuint g_programObject = 0;
+//GLuint g_vboVertexPos = 0;
+//GLuint g_vboVertexCoord = 0;
+//GLuint g_vboVertexIndex = 0;
+
+#define VERTEX_POS_INDX 0
+#define VERTEX_TEXCOORD_INDX 1
+
+#define VERTEX_POS_SIZE 2
+#define VERTEX_TEXCOORD_SIZE 2
 
 static inline int
 	nextp2(int x)
@@ -166,9 +182,44 @@ font_t * LoadFont(std::string path, int pointSize, int dpi)
 	return font;
 }
 
-void LoadShader()
+GLuint LoadShader(GLenum type, const char * shaderSrc)
 {
 
+	GLuint shader = glCreateShader(type);
+	if(shader == 0)
+	{
+		return 0;
+	}
+
+	glShaderSource(shader, 1, &shaderSrc, NULL);
+
+	glCompileShader(shader);
+
+	GLint compiled;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
+
+	if(!compiled)
+	{
+		GLint infoLen = 0;
+
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
+
+		if(infoLen > 1)
+		{
+			char * infoLog = (char *)malloc(sizeof(char) * infoLen);
+
+			glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
+			printf("%s", infoLog);
+			assert(false);
+
+			free(infoLog);
+		}
+
+		glDeleteShader(shader);
+		return 0;
+	}
+
+	return shader;
 }
 
 void InitFreeType()
@@ -190,12 +241,99 @@ void InitFreeType()
 		assert(false);
 	}
 
-	LoadShader();
+	char vShader[] = 
+		"#version 200 es \n"
+		"layout(location = 0) in vec2 vPosition;\n"
+		"layout(location = 1) in vec2 vTexCoord;\n"
+		"out vec2 ToFragmentTexCoord;"
+		"void main()\n"
+		"{\n"
+		"	gl_Position = vPosition;\n"
+		"	ToFragmentTexCoord = vTexCoord;\n"
+		"}\n";
+
+	char fShader[] = 
+		"#version 200 es \n"
+		"uniform sampler2D textureSampler;\n";
+		"in vec2 ToFragmentTexCoord;\n"
+		"out vec4 fragColor;\n"
+		"void main()\n"
+		"{\n"
+		"	fragColor = texture(textureSampler, ToFragmentTexCoord);\n"
+		"}\n";
+	//LoadShader();
+
+	GLuint vertexShader = LoadShader(GL_VERTEX_SHADER, vShader);
+	GLuint fragmentShader = LoadShader(GL_FRAGMENT_SHADER, fShader);
+
+	g_programObject = glCreateProgram();
+
+	glAttachShader(g_programObject, vertexShader);
+	glAttachShader(g_programObject, fragmentShader);
+
+	glLinkProgram(g_programObject);
+
+	GLint linked;
+	glGetProgramiv(g_programObject, GL_LINK_STATUS, &linked);
+	if(!linked)
+	{
+		GLint infoLen = 0;
+		glGetProgramiv(g_programObject, GL_INFO_LOG_LENGTH, &infoLen);
+		if(infoLen > 1)
+		{
+			char * infoLog = (char *)malloc(sizeof(char) * infoLen);
+
+			glGetProgramInfoLog(g_programObject, infoLen, NULL, infoLog);
+			printf("%s", infoLog);
+			assert(false);
+
+			free(infoLog);
+		}
+	}
+
+	GLint samplerLoc = glGetUniformLocation(g_programObject, "textureSampler");
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, g_font->font_texture);
+	glUniform1i(samplerLoc, 0);
 }
 
-void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indices, int texture)
+void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indices, int texture, int numIndices)
 {
+	int blend_enabled;
+	glGetIntegerv(GL_BLEND, &blend_enabled);
+	if(!blend_enabled)
+	{
+		glEnable(GL_BLEND);
+	}
 
+	//opengles只能自己管理blend状态
+	//int gl_blend_src, gl_blend_dst;
+	//glGetIntegerv(GL_BLEND_SRC, &gl_blend_src);
+	//glGetIntegerv(GL_BLEND_DST, &gl_blend_dst);
+
+	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+	glUseProgram(g_programObject);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+	glEnableVertexAttribArray(VERTEX_POS_INDX);
+	glEnableVertexAttribArray(VERTEX_TEXCOORD_INDX);
+
+	glVertexAttribPointer(VERTEX_POS_INDX, VERTEX_POS_SIZE, GL_FLOAT, GL_FALSE, VERTEX_POS_SIZE * sizeof(float), vertices);
+	glVertexAttribPointer(VERTEX_TEXCOORD_INDX, VERTEX_TEXCOORD_SIZE, GL_FLOAT, GL_FALSE, VERTEX_TEXCOORD_SIZE * sizeof(float), texture_coords);
+
+	glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, indices);
+	
+	glDisableVertexAttribArray(VERTEX_POS_INDX);
+	glDisableVertexAttribArray(VERTEX_TEXCOORD_INDX);
+	
+	// todo 恢复blend属性
+
+	if (!blend_enabled) {
+		glDisable(GL_BLEND);
+	}
 }
 
 void RenderText( const char * msg, int x, int y )
@@ -226,19 +364,7 @@ void RenderText( const char * msg, int x, int y )
 // 		glEnable(GL_TEXTURE_2D);
 // 	}
 
-	int blend_enabled;
-	glGetIntegerv(GL_BLEND, &blend_enabled);
-	if(!blend_enabled)
-	{
-		glEnable(GL_BLEND);
-	}
 
-	//opengles只能自己管理blend状态
-	//int gl_blend_src, gl_blend_dst;
-	//glGetIntegerv(GL_BLEND_SRC, &gl_blend_src);
-	//glGetIntegerv(GL_BLEND_DST, &gl_blend_dst);
-
-	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
 	//int vertex_array_enabled;
 	//glGetIntegerv(GL_VERTEX_ATTRIB_ARRAY_ENABLED, &vertex_array_enabled);
@@ -248,6 +374,7 @@ void RenderText( const char * msg, int x, int y )
 	GLshort * indices = (GLshort*) malloc(sizeof(GLfloat) * 5 * strlen(msg));
 
 	float pen_x = 0;
+	int numIndices = 0;
 	for(int i = 0; i < strlen(msg); ++i) {
 		char c = msg[i];
 
@@ -276,20 +403,18 @@ void RenderText( const char * msg, int x, int y )
 		indices[i * 6 + 4] = 4 * i + 1;
 		indices[i * 6 + 5] = 4 * i + 3;
 
+		numIndices++;
+
 		/* Assume we are only working with typewriter fonts */
 		pen_x += g_font->advance[c];
 	}
 
 	// Enable the user-defined vertex array
 	//glEnableVertexAttribArray(VertexArray);
-	RenderTexture(vertices, texture_coords, indices, g_font->font_texture);
+	RenderTexture(vertices, texture_coords, indices, g_font->font_texture, numIndices);
 	
 
-	// todo 恢复blend属性
 
-	if (!blend_enabled) {
-		glDisable(GL_BLEND);
-	}
 
 // 	if (!texture_enabled) {
 // 		glDisable(GL_TEXTURE_2D);
