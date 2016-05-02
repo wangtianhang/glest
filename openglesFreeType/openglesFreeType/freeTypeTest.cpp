@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdlib.h>
 
 #define GL_GLEXT_PROTOTYPES
 #include <EGL/egl.h>
@@ -369,7 +370,7 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 	}
 }
 
-void RenderText( const char * msg, int x, int y )
+float * RenderText( const char * msg, int x, int y , int * count)
 {
 	// …ËŒ™2d‰÷»æ
 	//glViewport(0, 0, (int) g_surface_width, (int) g_surface_height);
@@ -402,7 +403,7 @@ void RenderText( const char * msg, int x, int y )
 	//int vertex_array_enabled;
 	//glGetIntegerv(GL_VERTEX_ATTRIB_ARRAY_ENABLED, &vertex_array_enabled);
 
-	GLfloat * vertices = (GLfloat*) malloc(sizeof(GLfloat) * 8 * strlen(msg));
+	GLfloat * vertices = (GLfloat*) malloc(sizeof(GLfloat) * 12 * strlen(msg));
 	GLfloat * texture_coords = (GLfloat*) malloc(sizeof(GLfloat) * 8 * strlen(msg));
 	GLshort * indices = (GLshort*) malloc(sizeof(GLfloat) * 5 * strlen(msg));
 
@@ -411,14 +412,21 @@ void RenderText( const char * msg, int x, int y )
 	for(int i = 0; i < strlen(msg); ++i) {
 		char c = msg[i];
 
-		vertices[8 * i + 0] = x + pen_x + g_font->offset_x[c];
-		vertices[8 * i + 1] = y + g_font->offset_y[c];
-		vertices[8 * i + 2] = vertices[8 * i + 0] + g_font->width[c];
-		vertices[8 * i + 3] = vertices[8 * i + 1];
-		vertices[8 * i + 4] = vertices[8 * i + 0];
-		vertices[8 * i + 5] = vertices[8 * i + 1] + g_font->height[c];
-		vertices[8 * i + 6] = vertices[8 * i + 2];
-		vertices[8 * i + 7] = vertices[8 * i + 5];
+		vertices[12 * i + 0] = x + pen_x + g_font->offset_x[c];
+		vertices[12 * i + 1] = y + g_font->offset_y[c];
+		vertices[12 * i + 2] = 0;
+
+		vertices[12 * i + 3] = vertices[12 * i + 0] + g_font->width[c];
+		vertices[12 * i + 4] = vertices[12 * i + 1];
+		vertices[12 * i + 5] = 0;
+
+		vertices[12 * i + 6] = vertices[12 * i + 0];
+		vertices[12 * i + 7] = vertices[12 * i + 1] + g_font->height[c];
+		vertices[12 * i + 8] = 0;
+
+		vertices[12 * i + 9] = vertices[12 * i + 3];
+		vertices[12 * i + 10] = vertices[12 * i + 7];
+		vertices[12 * i + 11] = 0;
 
 		texture_coords[8 * i + 0] = g_font->tex_x1[c];
 		texture_coords[8 * i + 1] = g_font->tex_y2[c];
@@ -444,7 +452,42 @@ void RenderText( const char * msg, int x, int y )
 
 	// Enable the user-defined vertex array
 	//glEnableVertexAttribArray(VertexArray);
-	RenderTexture(vertices, texture_coords, indices, g_font->font_texture, 2 * numIndices);
+
+	for(int i = 0; i < numIndices * 12; ++i)
+	{
+		vertices[i] = vertices[i] / 300;
+	}
+
+	for(int i = 0; i < numIndices * 12; ++i)
+	{
+//		std::string output = "";
+// 		char c[50];
+// 		_itoa_s(i, c, 10);
+// 		output += c;
+// 		output += " ";
+		char buffer[256];
+		sprintf_s(buffer, "vertex %d %f\n", i, vertices[i]);
+		OutputDebugString(buffer);
+	}
+
+	(*count) = 12 * numIndices;
+	return vertices;
+
+	for(int i = 0; i < numIndices * 8; ++i)
+	{
+		char buffer[256];
+		sprintf_s(buffer, "textureCoord %d %f\n", i, texture_coords[i]);
+		OutputDebugString(buffer);
+	}
+
+	for(int i = 0; i < numIndices * 6; ++i)
+	{
+		char buffer[256];
+		sprintf_s(buffer, "indices %d %d\n", i, indices[i]);
+		OutputDebugString(buffer);
+	}
+	
+	//RenderTexture(vertices, texture_coords, indices, g_font->font_texture, 2 * numIndices);
 	
 
 
@@ -456,6 +499,11 @@ void RenderText( const char * msg, int x, int y )
 	free(vertices);
 	free(texture_coords);
 	free(indices);
+}
+
+void Test()
+{
+
 }
 
 

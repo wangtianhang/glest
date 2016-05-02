@@ -573,6 +573,8 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	//	GL_DEPTH_BUFFER_BIT or GL_STENCIL_BUFFER_BIT, respectively.
 	glClear(GL_COLOR_BUFFER_BIT);
 
+	//glCullFace(GL_FRONT_AND_BACK );
+
 	// Get the location of the transformation matrix in the shader using its name
 	glUseProgram(shaderProgram);
 	int matrixLocation = glGetUniformLocation(shaderProgram, "transformationMatrix");
@@ -611,10 +613,11 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	//	some vertices are accessed multiple times, without copying the vertex multiple times.
 	//	Others include versions of the above that allow the user to draw the same object multiple times with slightly different data, and
 	//	a version of glDrawElements which allows a user to restrict the actual indices accessed.
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, vertexNum / 3);
 	if (!testGLError(nativeWindow, "glDrawArrays")){ return false; }
 
-	RenderText("HelloWorld", 100, 100);
+	//RenderText("HelloWorld", 100, 100);
+	//float * ret = RenderText("HelloWorld", 100, 100);
 
 	//	Present the display data to the screen.
 	//	When rendering to a Window surface, OpenGL ES is double buffered. This means that OpenGL ES renders directly to one frame buffer,
@@ -732,17 +735,24 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	// Setup the EGL Context from the other EGL constructs created so far, so that the application is ready to submit OpenGL ES commands
 	if (!setupEGLContext(eglDisplay, eglConfig, eglSurface, eglContext, nativeWindow)){ goto cleanup; }
 
+	InitFreeType();
+	int count;
+	float * ret = RenderText("HelloWorld", 100, 100, &count);
+
 	// Initialize the vertex data in the application
-	if (!initializeBuffer(vertexBuffer, nativeWindow, vertexData, vertexNum)){ goto cleanup; }
+	if (!initializeBuffer(vertexBuffer, nativeWindow, ret, count)){ goto cleanup; }
+
+	
 
 	// Initialize the fragment and vertex shaders used in the application
 	if (!initializeShaders(fragmentShader, vertexShader, shaderProgram, nativeWindow)){ goto cleanup; }
 
-	InitFreeType();
+	
 	// Renders a triangle for 800 frames using the state setup in the previous function
-	for (int i = 0; i < 800; ++i)
+	
+	for (int i = 0; i < 1; ++i)
 	{
-		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow, vertexBuffer, vertexData, vertexNum))	{	break;	}
+		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow, vertexBuffer, ret, count))	{	break;	}
 	}
 
 	//InitFreeType();
