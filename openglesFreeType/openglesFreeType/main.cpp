@@ -713,9 +713,9 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 
 	// Vertex data containing the positions of each point of the triangle
 	GLfloat vertexData[] = { 
-		-0.4f, -0.4f, 0.0f, // Bottom Left
-		0.4f, -0.4f, 0.0f, // Bottom Right
-		0.0f, 0.4f, 0.0f
+		0.34f, 0.333f, 0.0f, // Bottom Left
+		0.376f, 0.333f, 0.0f, // Bottom Right
+		0.34f, 0.38f, 0.0f
 	}; // Top Middle
 
 	int vertexNum = 9;
@@ -740,7 +740,7 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	float * ret = RenderText("HelloWorld", 100, 100, &count);
 
 	// Initialize the vertex data in the application
-	if (!initializeBuffer(vertexBuffer, nativeWindow, ret, count)){ goto cleanup; }
+	if (!initializeBuffer(vertexBuffer, nativeWindow, vertexData, vertexNum)){ goto cleanup; }
 
 	
 
@@ -752,7 +752,7 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	
 	for (int i = 0; i < 1; ++i)
 	{
-		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow, vertexBuffer, ret, count))	{	break;	}
+		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow, vertexBuffer, vertexData, vertexNum))	{	break;	}
 	}
 
 	//InitFreeType();
