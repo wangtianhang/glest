@@ -579,6 +579,7 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// Get the location of the transformation matrix in the shader using its name
+	glUseProgram(shaderProgram);
 	int matrixLocation = glGetUniformLocation(shaderProgram, "transformationMatrix");
 
 	// Matrix used to specify the orientation of the triangle on screen.

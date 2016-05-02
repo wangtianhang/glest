@@ -49,6 +49,27 @@ GLuint g_programObject = 0;
 #define VERTEX_POS_SIZE 2
 #define VERTEX_TEXCOORD_SIZE 2
 
+const int strSize = 256;
+std::string intToStr(int i){
+	char str[strSize];
+	sprintf(str, "%d", i);
+	return str; 
+}
+
+void inline _assertGl(const char *file, int line){
+
+	GLenum error= glGetError();
+
+	if(error != GL_NO_ERROR){
+		const GLubyte * ret = glGetString(error);
+		const char *errorString= reinterpret_cast<const char*>(ret);
+		throw std::runtime_error("OpenGL error: "+std::string(errorString)+" at file: "+std::string(file)+", line "+intToStr(line));
+	}
+
+}
+
+#define assertGl() _assertGl(__FILE__, __LINE__);
+
 static inline int
 	nextp2(int x)
 {
@@ -253,11 +274,11 @@ void InitFreeType()
 
 	GLchar fShader[] = 
 		"precision mediump float;\n"
-		"uniform sampler2D textureSampler;\n"
+		"uniform sampler2D s_texture;\n"
 		"varying vec2 ToFragmentTexCoord;\n"
 		"void main(void)\n"
 		"{\n"
-		"	gl_FragColor = texture2D(textureSampler, ToFragmentTexCoord);\n"
+		"	gl_FragColor = texture2D(s_texture, ToFragmentTexCoord);\n"
 		"}\n";
 	//LoadShader();
 
@@ -288,11 +309,14 @@ void InitFreeType()
 			free(infoLog);
 		}
 	}
+	glUseProgram(g_programObject);
 
-	GLint samplerLoc = glGetUniformLocation(g_programObject, "textureSampler");
+	GLint samplerLoc = glGetUniformLocation(g_programObject, "s_texture");
+	assertGl();
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, g_font->font_texture);
 	glUniform1i(samplerLoc, 0);
+	assertGl();
 }
 
 void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indices, int texture, int numIndices)
