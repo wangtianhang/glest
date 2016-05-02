@@ -36,8 +36,8 @@ font_t * g_font = NULL;
 int g_charCount = 128;
 int g_num_segment_x = 16;
 int g_num_segment_y = 8;
-int g_surface_width = 0;
-int g_surface_height = 0;
+//int g_surface_width = 0;
+//int g_surface_height = 0;
 GLuint g_programObject = 0;
 //GLuint g_vboVertexPos = 0;
 //GLuint g_vboVertexCoord = 0;
@@ -226,40 +226,38 @@ void InitFreeType()
 {
 	int pointSize = 15;
 	int dpi = CalculateDpi();
-	g_font = LoadFont("c:\\windows\\fonts\verdana.ttf", pointSize, dpi);
+	g_font = LoadFont("c:\\windows\\fonts\\verdana.ttf", pointSize, dpi);
 
 	//EGLint surface_width, surface_height;
-	EGLDisplay egl_disp;
-	EGLSurface egl_surf;
-	eglQuerySurface(egl_disp, egl_surf, EGL_WIDTH, &g_surface_width);
-	eglQuerySurface(egl_disp, egl_surf, EGL_HEIGHT, &g_surface_height);
-	EGLint err = eglGetError();
-	if (err != 0x3000) 
-	{
-		//fprintf(stderr, "Unable to query EGL surface dimensions\n");
-		//return EXIT_FAILURE;
-		assert(false);
-	}
+// 	EGLDisplay egl_disp = 0;
+// 	EGLSurface egl_surf = 0;
+// 	eglQuerySurface(egl_disp, egl_surf, EGL_WIDTH, &g_surface_width);
+// 	eglQuerySurface(egl_disp, egl_surf, EGL_HEIGHT, &g_surface_height);
+// 	EGLint err = eglGetError();
+// 	if (err != 0x3000) 
+// 	{
+// 		//fprintf(stderr, "Unable to query EGL surface dimensions\n");
+// 		//return EXIT_FAILURE;
+// 		assert(false);
+// 	}
 
-	char vShader[] = 
-		"#version 200 es \n"
-		"layout(location = 0) in vec2 vPosition;\n"
-		"layout(location = 1) in vec2 vTexCoord;\n"
-		"out vec2 ToFragmentTexCoord;"
-		"void main()\n"
+	GLchar vShader[] = 
+		"attribute vec2 vPosition;\n"
+		"attribute vec2 vTexCoord;\n"
+		"varying vec2 ToFragmentTexCoord;\n"
+		"void main(void)\n"
 		"{\n"
-		"	gl_Position = vPosition;\n"
+		"	gl_Position = vec4(vPosition.x, vPosition.y, 0, 0);\n"
 		"	ToFragmentTexCoord = vTexCoord;\n"
 		"}\n";
 
-	char fShader[] = 
-		"#version 200 es \n"
-		"uniform sampler2D textureSampler;\n";
-		"in vec2 ToFragmentTexCoord;\n"
-		"out vec4 fragColor;\n"
-		"void main()\n"
+	GLchar fShader[] = 
+		"precision mediump float;\n"
+		"uniform sampler2D textureSampler;\n"
+		"varying vec2 ToFragmentTexCoord;\n"
+		"void main(void)\n"
 		"{\n"
-		"	fragColor = texture(textureSampler, ToFragmentTexCoord);\n"
+		"	gl_FragColor = texture2D(textureSampler, ToFragmentTexCoord);\n"
 		"}\n";
 	//LoadShader();
 
