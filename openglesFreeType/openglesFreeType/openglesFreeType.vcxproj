@@ -37,7 +37,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>./include/;$(IncludePath)</IncludePath>
+    <IncludePath>./Include\freetype2;./include/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -46,7 +46,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>./lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -69,6 +69,51 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="freeTypeTest.h" />
+    <ClInclude Include="Include\freetype2\freetype\config\ftconfig.h" />
+    <ClInclude Include="Include\freetype2\freetype\config\ftheader.h" />
+    <ClInclude Include="Include\freetype2\freetype\config\ftmodule.h" />
+    <ClInclude Include="Include\freetype2\freetype\config\ftoption.h" />
+    <ClInclude Include="Include\freetype2\freetype\config\ftstdlib.h" />
+    <ClInclude Include="Include\freetype2\freetype\freetype.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftbbox.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftbdf.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftbitmap.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftcache.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftchapters.h" />
+    <ClInclude Include="Include\freetype2\freetype\fterrdef.h" />
+    <ClInclude Include="Include\freetype2\freetype\fterrors.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftgasp.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftglyph.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftgxval.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftgzip.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftimage.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftincrem.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftlcdfil.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftlist.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftlzw.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftmac.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftmm.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftmodapi.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftmoderr.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftotval.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftoutln.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftpfr.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftrender.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftsizes.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftsnames.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftstroke.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftsynth.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftsystem.h" />
+    <ClInclude Include="Include\freetype2\freetype\fttrigon.h" />
+    <ClInclude Include="Include\freetype2\freetype\fttypes.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftwinfnt.h" />
+    <ClInclude Include="Include\freetype2\freetype\ftxf86.h" />
+    <ClInclude Include="Include\freetype2\freetype\t1tables.h" />
+    <ClInclude Include="Include\freetype2\freetype\ttnameid.h" />
+    <ClInclude Include="Include\freetype2\freetype\tttables.h" />
+    <ClInclude Include="Include\freetype2\freetype\tttags.h" />
+    <ClInclude Include="Include\freetype2\freetype\ttunpat.h" />
+    <ClInclude Include="Include\ft2build.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
