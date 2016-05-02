@@ -43,11 +43,11 @@ GLuint g_programObject = 0;
 //GLuint g_vboVertexCoord = 0;
 //GLuint g_vboVertexIndex = 0;
 
-#define VERTEX_POS_INDX 0
-#define VERTEX_TEXCOORD_INDX 1
+const int VERTEX_POS_INDX = 0;
+const int VERTEX_TEXCOORD_INDX  = 1;
 
-#define VERTEX_POS_SIZE 2
-#define VERTEX_TEXCOORD_SIZE 2
+const int VERTEX_POS_SIZE = 2;
+const int VERTEX_TEXCOORD_SIZE = 2;
 
 const int strSize = 256;
 std::string intToStr(int i){
@@ -278,7 +278,8 @@ void InitFreeType()
 		"varying vec2 ToFragmentTexCoord;\n"
 		"void main(void)\n"
 		"{\n"
-		"	gl_FragColor = texture2D(s_texture, ToFragmentTexCoord);\n"
+		//"	gl_FragColor = texture2D(s_texture, ToFragmentTexCoord);\n"
+		"	gl_FragColor = vec4(0, 0, 0, 1);\n"
 		"}\n";
 	//LoadShader();
 
@@ -336,20 +337,30 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
 	glUseProgram(g_programObject);
+	assertGl();
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
+ 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	assertGl();
+ 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	assertGl();
+ 
 	glEnableVertexAttribArray(VERTEX_POS_INDX);
+	assertGl();
 	glEnableVertexAttribArray(VERTEX_TEXCOORD_INDX);
+	assertGl();
 
 	glVertexAttribPointer(VERTEX_POS_INDX, VERTEX_POS_SIZE, GL_FLOAT, GL_FALSE, VERTEX_POS_SIZE * sizeof(float), vertices);
+	assertGl();
 	glVertexAttribPointer(VERTEX_TEXCOORD_INDX, VERTEX_TEXCOORD_SIZE, GL_FLOAT, GL_FALSE, VERTEX_TEXCOORD_SIZE * sizeof(float), texture_coords);
+	assertGl();
 
 	glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, indices);
+	assertGl();
 	
 	glDisableVertexAttribArray(VERTEX_POS_INDX);
+	assertGl();
 	glDisableVertexAttribArray(VERTEX_TEXCOORD_INDX);
+	assertGl();
 	
 	// todo »Ö¸´blendÊôÐÔ
 
@@ -433,7 +444,7 @@ void RenderText( const char * msg, int x, int y )
 
 	// Enable the user-defined vertex array
 	//glEnableVertexAttribArray(VertexArray);
-	RenderTexture(vertices, texture_coords, indices, g_font->font_texture, numIndices);
+	RenderTexture(vertices, texture_coords, indices, g_font->font_texture, 2 * numIndices);
 	
 
 
