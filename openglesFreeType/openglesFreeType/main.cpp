@@ -16,6 +16,8 @@
 #include <GLES2/gl2.h>
 #include <vector>
 
+#include "freeTypeTest.h"
+
 // Windows class name to register
 #define	WINDOW_CLASS_NAME _T("PVRShellClass")
 
@@ -732,12 +734,16 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow))	{	break;	}
 	}
 
-	// Release any resources we created in the Initialize functions
-	deInitializeGLState(fragmentShader, vertexShader, shaderProgram, vertexBuffer);
+	InitFreeType();
+
+	RenderText("HelloWorld", 100, 100);
 
 	//int pause;
 	//scanf("%d",&pause);
 	system("pause");
+
+	// Release any resources we created in the Initialize functions
+	deInitializeGLState(fragmentShader, vertexShader, shaderProgram, vertexBuffer);
 
     cleanup:
         // Release the EGL State
