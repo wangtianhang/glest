@@ -615,6 +615,8 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	if (!testGLError(nativeWindow, "glDrawArrays")){ return false; }
 
+	RenderText("HelloWorld", 100, 100);
+
 	//	Present the display data to the screen.
 	//	When rendering to a Window surface, OpenGL ES is double buffered. This means that OpenGL ES renders directly to one frame buffer,
 	//	known as the back buffer, whilst the display reads from another - the front buffer. eglSwapBuffers signals to the windowing system
@@ -728,15 +730,16 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	// Initialize the fragment and vertex shaders used in the application
 	if (!initializeShaders(fragmentShader, vertexShader, shaderProgram, nativeWindow)){ goto cleanup; }
 
+	InitFreeType();
 	// Renders a triangle for 800 frames using the state setup in the previous function
 	for (int i = 0; i < 800; ++i)
 	{
 		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow))	{	break;	}
 	}
 
-	InitFreeType();
+	//InitFreeType();
 
-	RenderText("HelloWorld", 100, 100);
+	//RenderText("HelloWorld", 100, 100);
 
 	//int pause;
 	//scanf("%d",&pause);

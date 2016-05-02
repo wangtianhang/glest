@@ -4,6 +4,6 @@
 #include <string>
 
 void InitFreeType();
-void RenderText(std::string text, int x, int y);
+void RenderText(const char * msg, int x, int y);
 
 #endif

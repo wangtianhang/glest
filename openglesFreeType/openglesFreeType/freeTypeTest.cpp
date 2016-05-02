@@ -26,10 +26,12 @@ struct font_t {
 	int initialized;
 };
 
-//font_t * g_font;
+font_t * g_font;
 int g_charCount = 128;
 int g_num_segment_x = 16;
 int g_num_segment_y = 8;
+int g_surface_width;
+int g_surface_height;
 
 static inline int
 	nextp2(int x)
@@ -37,6 +39,11 @@ static inline int
 	int val = 1;
 	while(val < x) val <<= 1;
 	return val;
+}
+
+int CalculateDpi()
+{
+	return 96;
 }
 
 font_t * LoadFont(std::string path, int pointSize, int dpi)
@@ -159,12 +166,138 @@ font_t * LoadFont(std::string path, int pointSize, int dpi)
 	return font;
 }
 
+void LoadShader()
+{
+
+}
+
 void InitFreeType()
 {
-	LoadFont("c:\\windows\\fonts\verdana.ttf", 15, 72);
+	int pointSize = 15;
+	int dpi = CalculateDpi();
+	g_font = LoadFont("c:\\windows\\fonts\verdana.ttf", pointSize, dpi);
+
+	//EGLint surface_width, surface_height;
+	EGLDisplay egl_disp;
+	EGLSurface egl_surf;
+	eglQuerySurface(egl_disp, egl_surf, EGL_WIDTH, &g_surface_width);
+	eglQuerySurface(egl_disp, egl_surf, EGL_HEIGHT, &g_surface_height);
+	EGLint err = eglGetError();
+	if (err != 0x3000) 
+	{
+		//fprintf(stderr, "Unable to query EGL surface dimensions\n");
+		//return EXIT_FAILURE;
+		assert(false);
+	}
+
+	LoadShader();
 }
 
-void RenderText( std::string text, int x, int y )
+void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indices, int texture)
 {
 
 }
+
+void RenderText( const char * msg, int x, int y )
+{
+	// 设为2d渲染
+	//glViewport(0, 0, (int) g_surface_width, (int) g_surface_height);
+	// 调用shader渲染
+
+	if(!g_font)
+	{
+		assert(false);
+	}
+
+	if(!g_font->initialized)
+	{
+		assert(false);
+	}
+
+	if(!msg)
+	{
+		assert(false);
+	}
+
+// 	int texture_enabled;
+// 	glGetIntegerv(GL_TEXTURE_2D, &texture_enabled);
+// 	if(!texture_enabled)
+// 	{
+// 		glEnable(GL_TEXTURE_2D);
+// 	}
+
+	int blend_enabled;
+	glGetIntegerv(GL_BLEND, &blend_enabled);
+	if(!blend_enabled)
+	{
+		glEnable(GL_BLEND);
+	}
+
+	//opengles只能自己管理blend状态
+	//int gl_blend_src, gl_blend_dst;
+	//glGetIntegerv(GL_BLEND_SRC, &gl_blend_src);
+	//glGetIntegerv(GL_BLEND_DST, &gl_blend_dst);
+
+	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+	//int vertex_array_enabled;
+	//glGetIntegerv(GL_VERTEX_ATTRIB_ARRAY_ENABLED, &vertex_array_enabled);
+
+	GLfloat * vertices = (GLfloat*) malloc(sizeof(GLfloat) * 8 * strlen(msg));
+	GLfloat * texture_coords = (GLfloat*) malloc(sizeof(GLfloat) * 8 * strlen(msg));
+	GLshort * indices = (GLshort*) malloc(sizeof(GLfloat) * 5 * strlen(msg));
+
+	float pen_x = 0;
+	for(int i = 0; i < strlen(msg); ++i) {
+		char c = msg[i];
+
+		vertices[8 * i + 0] = x + pen_x + g_font->offset_x[c];
+		vertices[8 * i + 1] = y + g_font->offset_y[c];
+		vertices[8 * i + 2] = vertices[8 * i + 0] + g_font->width[c];
+		vertices[8 * i + 3] = vertices[8 * i + 1];
+		vertices[8 * i + 4] = vertices[8 * i + 0];
+		vertices[8 * i + 5] = vertices[8 * i + 1] + g_font->height[c];
+		vertices[8 * i + 6] = vertices[8 * i + 2];
+		vertices[8 * i + 7] = vertices[8 * i + 5];
+
+		texture_coords[8 * i + 0] = g_font->tex_x1[c];
+		texture_coords[8 * i + 1] = g_font->tex_y2[c];
+		texture_coords[8 * i + 2] = g_font->tex_x2[c];
+		texture_coords[8 * i + 3] = g_font->tex_y2[c];
+		texture_coords[8 * i + 4] = g_font->tex_x1[c];
+		texture_coords[8 * i + 5] = g_font->tex_y1[c];
+		texture_coords[8 * i + 6] = g_font->tex_x2[c];
+		texture_coords[8 * i + 7] = g_font->tex_y1[c];
+
+		indices[i * 6 + 0] = 4 * i + 0;
+		indices[i * 6 + 1] = 4 * i + 1;
+		indices[i * 6 + 2] = 4 * i + 2;
+		indices[i * 6 + 3] = 4 * i + 2;
+		indices[i * 6 + 4] = 4 * i + 1;
+		indices[i * 6 + 5] = 4 * i + 3;
+
+		/* Assume we are only working with typewriter fonts */
+		pen_x += g_font->advance[c];
+	}
+
+	// Enable the user-defined vertex array
+	//glEnableVertexAttribArray(VertexArray);
+	RenderTexture(vertices, texture_coords, indices, g_font->font_texture);
+	
+
+	// todo 恢复blend属性
+
+	if (!blend_enabled) {
+		glDisable(GL_BLEND);
+	}
+
+// 	if (!texture_enabled) {
+// 		glDisable(GL_TEXTURE_2D);
+// 	}
+
+	free(vertices);
+	free(texture_coords);
+	free(indices);
+}
+
+
