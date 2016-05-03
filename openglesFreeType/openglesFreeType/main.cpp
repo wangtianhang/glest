@@ -616,7 +616,7 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	//glDrawArrays(GL_TRIANGLES, 0, vertexNum / 3);
 	//if (!testGLError(nativeWindow, "glDrawArrays")){ return false; }
 
-	RenderText("HelloWorld", 100, 100);
+	RenderText("helloworld", 100, 100);
 	//float * ret = RenderText("HelloWorld", 100, 100);
 
 	//	Present the display data to the screen.

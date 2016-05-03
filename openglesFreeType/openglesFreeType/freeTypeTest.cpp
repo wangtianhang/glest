@@ -473,7 +473,7 @@ void RenderText( const char * msg, int x, int y)
 		}
 	}
 
-	for(int i = 0; i < numIndices * 12; ++i)
+	for(int i = 0; i < numIndices * 12; i += 3)
 	{
 //		std::string output = "";
 // 		char c[50];
@@ -481,24 +481,24 @@ void RenderText( const char * msg, int x, int y)
 // 		output += c;
 // 		output += " ";
 		char buffer[256];
-		sprintf_s(buffer, "vertex %d %f\n", i, vertices[i]);
+		sprintf_s(buffer, "vertex %d   %f   %f   %f\n", i / 3, vertices[i], vertices[i + 1], vertices[i + 2]);
 		OutputDebugString(buffer);
 	}
 
 	//(*count) = 12 * numIndices;
 	//return vertices;
 
-	for(int i = 0; i < numIndices * 8; ++i)
+	for(int i = 0; i < numIndices * 8; i += 2)
 	{
 		char buffer[256];
-		sprintf_s(buffer, "textureCoord %d %f\n", i, texture_coords[i]);
+		sprintf_s(buffer, "textureCoord %d   %f   %f\n", i / 2, texture_coords[i], texture_coords[i + 1]);
 		OutputDebugString(buffer);
 	}
 
-	for(int i = 0; i < numIndices * 6; ++i)
+	for(int i = 0; i < numIndices * 6; i += 3)
 	{
 		char buffer[256];
-		sprintf_s(buffer, "indices %d %d\n", i, indices[i]);
+		sprintf_s(buffer, "indices %d   %d   %d  %d\n", i / 3, indices[i], indices[i + 1], indices[i + 2]);
 		OutputDebugString(buffer);
 	}
 	
