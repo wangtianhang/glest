@@ -616,7 +616,7 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	glDrawArrays(GL_TRIANGLES, 0, vertexNum / 3);
 	if (!testGLError(nativeWindow, "glDrawArrays")){ return false; }
 
-	//RenderText("HelloWorld", 100, 100);
+	RenderText("HelloWorld", 100, 100);
 	//float * ret = RenderText("HelloWorld", 100, 100);
 
 	//	Present the display data to the screen.
@@ -736,8 +736,8 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	if (!setupEGLContext(eglDisplay, eglConfig, eglSurface, eglContext, nativeWindow)){ goto cleanup; }
 
 	InitFreeType();
-	int count;
-	float * ret = RenderText("HelloWorld", 100, 100, &count);
+	//int count;
+	//RenderText("HelloWorld", 100, 100);
 
 	// Initialize the vertex data in the application
 	if (!initializeBuffer(vertexBuffer, nativeWindow, vertexData, vertexNum)){ goto cleanup; }

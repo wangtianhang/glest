@@ -4,8 +4,8 @@
 #include <string>
 
 void InitFreeType();
-float * RenderText(const char * msg, int x, int y, int * count);
+void RenderText(const char * msg, int x, int y);
 
-void Test();
+/*void Test();*/
 
 #endif

@@ -337,7 +337,7 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 
 	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-	glUseProgram(g_programObject);
+	//glUseProgram(g_programObject);
 	assertGl();
 
  	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -370,7 +370,7 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 	}
 }
 
-float * RenderText( const char * msg, int x, int y , int * count)
+void RenderText( const char * msg, int x, int y)
 {
 	// …ËŒ™2d‰÷»æ
 	//glViewport(0, 0, (int) g_surface_width, (int) g_surface_height);
@@ -470,8 +470,8 @@ float * RenderText( const char * msg, int x, int y , int * count)
 		OutputDebugString(buffer);
 	}
 
-	(*count) = 12 * numIndices;
-	return vertices;
+	//(*count) = 12 * numIndices;
+	//return vertices;
 
 	for(int i = 0; i < numIndices * 8; ++i)
 	{
@@ -487,7 +487,7 @@ float * RenderText( const char * msg, int x, int y , int * count)
 		OutputDebugString(buffer);
 	}
 	
-	//RenderTexture(vertices, texture_coords, indices, g_font->font_texture, 2 * numIndices);
+	RenderTexture(vertices, texture_coords, indices, g_font->font_texture, 2 * numIndices);
 	
 
 
@@ -501,9 +501,9 @@ float * RenderText( const char * msg, int x, int y , int * count)
 	free(indices);
 }
 
-void Test()
-{
-
-}
+// void Test()
+// {
+// 
+// }
 
 
