@@ -409,7 +409,7 @@ void RenderText( const char * msg, int x, int y)
 
 	GLfloat * vertices = (GLfloat*) malloc(sizeof(GLfloat) * 12 * strlen(msg));
 	GLfloat * texture_coords = (GLfloat*) malloc(sizeof(GLfloat) * 8 * strlen(msg));
-	GLshort * indices = (GLshort*) malloc(sizeof(GLfloat) * 5 * strlen(msg));
+	GLshort * indices = (GLshort*) malloc(sizeof(GLfloat) * 6 * strlen(msg));
 
 	float pen_x = 0;
 	int numIndices = 0;
@@ -461,11 +461,11 @@ void RenderText( const char * msg, int x, int y)
 	{
 		if(i % 3 == 0)
 		{
-			vertices[i] = vertices[i] / 400;
+			vertices[i] = vertices[i] / 400 // ÆÁÄ»°ë¿í¶È;
 		}
 		else if(i % 3 == 1)
 		{
-			vertices[i] = vertices[i] / 300;
+			vertices[i] = vertices[i] / 300 // ÆÁÄ»°ë¸ß¶È;
 		}
 		else
 		{
