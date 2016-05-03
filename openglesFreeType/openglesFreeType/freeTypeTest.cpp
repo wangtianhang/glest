@@ -47,7 +47,7 @@ GLuint g_programObject = 0;
 const int VERTEX_POS_INDX = 0;
 const int VERTEX_TEXCOORD_INDX  = 1;
 
-const int VERTEX_POS_SIZE = 2;
+const int VERTEX_POS_SIZE = 3;
 const int VERTEX_TEXCOORD_SIZE = 2;
 
 const int strSize = 256;
@@ -264,12 +264,12 @@ void InitFreeType()
 // 	}
 
 	GLchar vShader[] = 
-		"attribute vec2 vPosition;\n"
+		"attribute vec3 vPosition;\n"
 		"attribute vec2 vTexCoord;\n"
 		"varying vec2 ToFragmentTexCoord;\n"
 		"void main(void)\n"
 		"{\n"
-		"	gl_Position = vec4(vPosition.x, vPosition.y, 0, 0);\n"
+		"	gl_Position = vec4(vPosition.x, vPosition.y, vPosition.z, 0);\n"
 		"	ToFragmentTexCoord = vTexCoord;\n"
 		"}\n";
 

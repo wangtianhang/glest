@@ -613,8 +613,8 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	//	some vertices are accessed multiple times, without copying the vertex multiple times.
 	//	Others include versions of the above that allow the user to draw the same object multiple times with slightly different data, and
 	//	a version of glDrawElements which allows a user to restrict the actual indices accessed.
-	glDrawArrays(GL_TRIANGLES, 0, vertexNum / 3);
-	if (!testGLError(nativeWindow, "glDrawArrays")){ return false; }
+	//glDrawArrays(GL_TRIANGLES, 0, vertexNum / 3);
+	//if (!testGLError(nativeWindow, "glDrawArrays")){ return false; }
 
 	RenderText("HelloWorld", 100, 100);
 	//float * ret = RenderText("HelloWorld", 100, 100);
