@@ -359,7 +359,7 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 	glVertexAttribPointer(VERTEX_TEXCOORD_INDX, VERTEX_TEXCOORD_SIZE, GL_FLOAT, GL_FALSE, VERTEX_TEXCOORD_SIZE * sizeof(float), texture_coords);
 	assertGl();
 
-	glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, indices);
+	glDrawElements(GL_TRIANGLES, numIndices * 3, GL_UNSIGNED_SHORT, indices);
 	assertGl();
 	
 	glDisableVertexAttribArray(VERTEX_POS_INDX);
@@ -402,7 +402,7 @@ void RenderText( const char * msg, int x, int y)
 // 		glEnable(GL_TEXTURE_2D);
 // 	}
 
-
+	//glCullFace(GL_FRONT_AND_BACK);
 
 	//int vertex_array_enabled;
 	//glGetIntegerv(GL_VERTEX_ATTRIB_ARRAY_ENABLED, &vertex_array_enabled);
