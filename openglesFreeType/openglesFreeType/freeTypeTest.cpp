@@ -51,6 +51,10 @@ const int VERTEX_POS_SIZE = 3;
 const int VERTEX_TEXCOORD_SIZE = 2;
 
 const int strSize = 256;
+
+extern const unsigned int WindowWidth;
+extern const unsigned int WindowHeight;
+
 std::string intToStr(int i){
 	char str[strSize];
 	sprintf(str, "%d", i);
@@ -455,7 +459,18 @@ void RenderText( const char * msg, int x, int y)
 
 	for(int i = 0; i < numIndices * 12; ++i)
 	{
-		vertices[i] = vertices[i] / 300;
+		if(i % 3 == 0)
+		{
+			vertices[i] = vertices[i] / 400;
+		}
+		else if(i % 3 == 1)
+		{
+			vertices[i] = vertices[i] / 300;
+		}
+		else
+		{
+
+		}
 	}
 
 	for(int i = 0; i < numIndices * 12; ++i)
