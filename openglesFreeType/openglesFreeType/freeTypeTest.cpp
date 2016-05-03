@@ -264,12 +264,12 @@ void InitFreeType()
 // 	}
 
 	GLchar vShader[] = 
-		"attribute vec3 vPosition;\n"
+		"attribute vec4 vPosition;\n"
 		"attribute vec2 vTexCoord;\n"
 		"varying vec2 ToFragmentTexCoord;\n"
 		"void main(void)\n"
 		"{\n"
-		"	gl_Position = vec4(vPosition.x, vPosition.y, vPosition.z, 0);\n"
+		"	gl_Position = vec4(vPosition.x, vPosition.y, vPosition.z, vPosition.w);\n"
 		"	ToFragmentTexCoord = vTexCoord;\n"
 		"}\n";
 
@@ -279,8 +279,8 @@ void InitFreeType()
 		"varying vec2 ToFragmentTexCoord;\n"
 		"void main(void)\n"
 		"{\n"
-		//"	gl_FragColor = texture2D(s_texture, ToFragmentTexCoord);\n"
-		"	gl_FragColor = vec4(0, 0, 0, 1);\n"
+		"	gl_FragColor = texture2D(s_texture, ToFragmentTexCoord);\n"
+		//"	gl_FragColor = vec4(0, 0, 0, 1);\n"
 		"}\n";
 	//LoadShader();
 
@@ -337,7 +337,7 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 
 	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-	//glUseProgram(g_programObject);
+	glUseProgram(g_programObject);
 	assertGl();
 
  	glBindBuffer(GL_ARRAY_BUFFER, 0);
