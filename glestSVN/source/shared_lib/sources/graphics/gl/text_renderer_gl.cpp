@@ -54,12 +54,14 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 		glEnable(GL_BLEND);
 	}
 
+	//glEnable(GL_TEXTURE_2D);
+
 	//opengles只能自己管理blend状态
 	//int gl_blend_src, gl_blend_dst;
 	//glGetIntegerv(GL_BLEND_SRC, &gl_blend_src);
 	//glGetIntegerv(GL_BLEND_DST, &gl_blend_dst);
 
-	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+	//glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
 	//glIsEnabled(GL_TEXTURE_2D);
 
@@ -96,6 +98,8 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 	assertGl();
 
 	glUseProgram(0);
+
+	//glDisable(GL_TEXTURE_2D);
 
 	// todo 恢复blend属性
 
