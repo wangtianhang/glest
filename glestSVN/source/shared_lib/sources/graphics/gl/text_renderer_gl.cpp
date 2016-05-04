@@ -64,6 +64,12 @@ void RenderTexture(GLfloat * vertices, GLfloat * texture_coords, GLshort * indic
 	//glIsEnabled(GL_TEXTURE_2D);
 
 	glUseProgram(programObject);
+	
+	GLint samplerLoc = glGetUniformLocation(programObject, "s_texture");
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glUniform1i(samplerLoc, 0);
+
 	assertGl();
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -150,18 +156,18 @@ void TextRenderer2DGl::render(const string &text, int x, int y, bool centered){
 		x -= halfWidth;
 		y -= halfHeight;
 
-		font_t * font = m_font->GetFont();
-		if (!font)
+		font_t * SelfFont = m_font->GetFont();
+		if (!SelfFont)
 		{
 			return;
 		}
 
-		if(!font)
+		if(!SelfFont)
 		{
 			assert(false);
 		}
 
-		if(!font->initialized)
+		if(!SelfFont->initialized)
 		{
 			assert(false);
 		}
@@ -176,7 +182,7 @@ void TextRenderer2DGl::render(const string &text, int x, int y, bool centered){
 		for(int i = 0; i < strlen(msg); ++i) 
 		{
 			char c = msg[i];
-			length += font->advance[c];
+			length += SelfFont->advance[c];
 		}
 		x -= length / 2;
 
@@ -189,30 +195,30 @@ void TextRenderer2DGl::render(const string &text, int x, int y, bool centered){
 		for(int i = 0; i < strlen(msg); ++i) {
 			char c = msg[i];
 
-			vertices[12 * i + 0] = x + pen_x + font->offset_x[c];
-			vertices[12 * i + 1] = y + font->offset_y[c];
+			vertices[12 * i + 0] = x + pen_x + SelfFont->offset_x[c];
+			vertices[12 * i + 1] = y + SelfFont->offset_y[c];
 			vertices[12 * i + 2] = 0;
 
-			vertices[12 * i + 3] = vertices[12 * i + 0] + font->width[c];
+			vertices[12 * i + 3] = vertices[12 * i + 0] + SelfFont->width[c];
 			vertices[12 * i + 4] = vertices[12 * i + 1];
 			vertices[12 * i + 5] = 0;
 
 			vertices[12 * i + 6] = vertices[12 * i + 0];
-			vertices[12 * i + 7] = vertices[12 * i + 1] + font->height[c];
+			vertices[12 * i + 7] = vertices[12 * i + 1] + SelfFont->height[c];
 			vertices[12 * i + 8] = 0;
 
 			vertices[12 * i + 9] = vertices[12 * i + 3];
 			vertices[12 * i + 10] = vertices[12 * i + 7];
 			vertices[12 * i + 11] = 0;
 
-			texture_coords[8 * i + 0] = font->tex_x1[c];
-			texture_coords[8 * i + 1] = font->tex_y2[c];
-			texture_coords[8 * i + 2] = font->tex_x2[c];
-			texture_coords[8 * i + 3] = font->tex_y2[c];
-			texture_coords[8 * i + 4] = font->tex_x1[c];
-			texture_coords[8 * i + 5] = font->tex_y1[c];
-			texture_coords[8 * i + 6] = font->tex_x2[c];
-			texture_coords[8 * i + 7] = font->tex_y1[c];
+			texture_coords[8 * i + 0] = SelfFont->tex_x1[c];
+			texture_coords[8 * i + 1] = SelfFont->tex_y2[c];
+			texture_coords[8 * i + 2] = SelfFont->tex_x2[c];
+			texture_coords[8 * i + 3] = SelfFont->tex_y2[c];
+			texture_coords[8 * i + 4] = SelfFont->tex_x1[c];
+			texture_coords[8 * i + 5] = SelfFont->tex_y1[c];
+			texture_coords[8 * i + 6] = SelfFont->tex_x2[c];
+			texture_coords[8 * i + 7] = SelfFont->tex_y1[c];
 
 			indices[i * 6 + 0] = 4 * i + 0;
 			indices[i * 6 + 1] = 4 * i + 1;
@@ -224,7 +230,7 @@ void TextRenderer2DGl::render(const string &text, int x, int y, bool centered){
 			numIndices++;
 
 			/* Assume we are only working with typewriter fonts */
-			pen_x += font->advance[c];
+			pen_x += SelfFont->advance[c];
 		}
 
 		for(int i = 0; i < numIndices * 12; ++i)
@@ -264,17 +270,18 @@ void TextRenderer2DGl::render(const string &text, int x, int y, bool centered){
 		// 		OutputDebugString(buffer);
 		// 	}
 
-		GLuint tmp;
-		glGenTextures(1, &tmp);
-		glBindTexture(GL_TEXTURE_2D, tmp);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+// 		GLuint tmp;
+// 		glGenTextures(1, &tmp);
+// 		glBindTexture(GL_TEXTURE_2D, tmp);
+// 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+// 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, font->m_font_tex_width, font->m_font_tex_height, 0, GL_LUMINANCE_ALPHA , GL_UNSIGNED_BYTE, font->m_font_texture_data);
+//		glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, font->m_font_tex_width, font->m_font_tex_height, 0, GL_LUMINANCE_ALPHA , GL_UNSIGNED_BYTE, font->m_font_texture_data);
 
-		RenderTexture(vertices, texture_coords, indices, tmp, 2 * numIndices, m_font->GetShaderProgram());
 
-		glDeleteTextures(1, &tmp);
+		RenderTexture(vertices, texture_coords, indices, SelfFont->font_texture, 2 * numIndices, m_font->GetShaderProgram());
+
+//		glDeleteTextures(1, &tmp);
 
 		free(vertices);
 		free(texture_coords);

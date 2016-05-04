@@ -20,7 +20,7 @@
 
 #include <freetype/freetype.h>
 
-bool g_useOldFont = true;
+bool g_useOldFont = false;
 
 namespace Shared{ namespace Graphics{ namespace Gl{
 
@@ -277,14 +277,14 @@ void Font2DGl::init(){
 				}
 			}
 
-			glUseProgram(m_programObject);
-			GLint samplerLoc = glGetUniformLocation(m_programObject, "s_texture");
-			assertGl();
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, m_font->font_texture);
-			glUniform1i(samplerLoc, 0);
-			assertGl();
-			glUseProgram(0);
+			//glUseProgram(m_programObject);
+			//GLint samplerLoc = glGetUniformLocation(m_programObject, "s_texture");
+			//assertGl();
+			//glActiveTexture(GL_TEXTURE0);
+			//glBindTexture(GL_TEXTURE_2D, m_font->font_texture);
+			//glUniform1i(samplerLoc, 0);
+			//assertGl();
+			//glUseProgram(0);
 		}
 
 		inited = true;
