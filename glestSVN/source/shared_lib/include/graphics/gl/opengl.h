@@ -49,7 +49,7 @@ void inline _assertGl(const char *file, int line){
 	GLenum error= glGetError();
 
 	if(error != GL_NO_ERROR){
-		const char *errorString= reinterpret_cast<const char*>(glGetString(error));
+		const char *errorString= reinterpret_cast<const char*>(gluErrorString(error));
 		throw runtime_error("OpenGL error: "+string(errorString)+" at file: "+string(file)+", line "+intToStr(line));
 	}
 
