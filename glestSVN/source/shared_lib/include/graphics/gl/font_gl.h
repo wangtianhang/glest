@@ -15,7 +15,37 @@
 #include "font.h"
 #include "opengl.h"
 
+// #include <ft2build.h>
+// #include FT_FREETYPE_H
+// 
+// #include <freetype/freetype.h>
+//typedef struct * FT_Face;
+
+//typedef struct FT_FaceRec_*  FT_Face;
+
+struct font_t {
+	unsigned int font_texture;
+	float pt;
+	float advance[128];
+	float width[128];
+	float height[128];
+	float tex_x1[128];
+	float tex_x2[128];
+	float tex_y1[128];
+	float tex_y2[128];
+	float offset_x[128];
+	float offset_y[128];
+
+	int m_font_tex_width;
+	int m_font_tex_height;
+	GLubyte * m_font_texture_data;
+
+	int initialized;
+};
+
 namespace Shared{ namespace Graphics{ namespace Gl{
+
+//struct FT_Library;
 
 // =====================================================
 //	class FontGl
@@ -36,9 +66,19 @@ public:
 // =====================================================
 
 class Font2DGl: public Font2D, public FontGl{
+	//FT_Library  * m_library;
+	//FT_Face * m_facePointer;
+	font_t * m_font;
+	GLuint m_programObject;
+
 public:
+	//FT_Face * GetFTFace();
+
 	virtual void init();
 	virtual void end();
+
+	font_t * GetFont() const;
+	GLuint GetShaderProgram() const;
 };
 
 // =====================================================

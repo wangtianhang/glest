@@ -48,7 +48,7 @@ float FontMetrics::getHeight() const{
 //	class Font
 // ===============================================
 
-const int Font::charCount= 256;
+const int Font::charCount= 128;
 
 Font::Font(){
 	inited= false;

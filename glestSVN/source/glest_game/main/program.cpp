@@ -216,7 +216,7 @@ void Program::init(WindowGl *window){
     coreData.load();
 
 	//init renderer (load global textures)
-	renderer.init();
+	renderer.init(config.getInt("ScreenWidth"), config.getInt("ScreenHeight"));
 
 	//sound
 	SoundRenderer &soundRenderer= SoundRenderer::getInstance();

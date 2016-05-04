@@ -25,15 +25,19 @@ class Font3DGl;
 
 class TextRenderer2DGl: public TextRenderer2D{
 private:
-	const Font2DGl *font;
+	const Font2DGl *m_font;
 	bool rendering;
 
+	int m_width;
+	int m_height;
 public:
 	TextRenderer2DGl();
 
 	virtual void begin(const Font2D *font);
 	virtual void render(const string &text, int x, int y, bool centered);
 	virtual void end();
+
+	virtual void init(int width, int height);
 };
 
 // =====================================================

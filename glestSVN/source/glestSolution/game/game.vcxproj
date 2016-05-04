@@ -49,7 +49,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>dsound.lib;dxguid.lib;ogg_static.lib;vorbis_static.lib;vorbisfile_static.lib;xerces-c_2.lib;opengl32.lib;glu32.lib;wsock32.lib;libglest.lib;mmc.lib;lua.lib;dbghelp.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>dsound.lib;dxguid.lib;ogg_static.lib;vorbis_static.lib;vorbisfile_static.lib;xerces-c_2.lib;opengl32.lib;glu32.lib;wsock32.lib;libglest.lib;mmc.lib;lua.lib;dbghelp.lib;glew32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;..\..\..\deps\lib;..\..\..\source\glestSolution\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/NODEFAULTLIB:libcmt.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>

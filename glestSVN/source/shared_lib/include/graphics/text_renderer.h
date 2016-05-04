@@ -32,6 +32,8 @@ public:
 	virtual void begin(const Font2D *font)= 0;
 	virtual void render(const string &text, int x, int y, bool centered= false)= 0;
 	virtual void end()= 0;
+
+	virtual void init(int width, int height) = 0;
 };
 
 // =====================================================

@@ -187,7 +187,10 @@ Renderer &Renderer::getInstance(){
 
 // ==================== init ==================== 
 
-void Renderer::init(){
+void Renderer::init(int w, int h){
+
+	//m_width = w;
+	//m_height = h;
 
 	Config &config= Config::getInstance();
 
@@ -206,6 +209,8 @@ void Renderer::init(){
 	modelManager[rsGlobal]->init();
 	textureManager[rsGlobal]->init();
 	fontManager[rsGlobal]->init();
+
+	textRenderer->init(w, h);
 
 	init2dList();
 }

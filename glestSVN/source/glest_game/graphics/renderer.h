@@ -165,6 +165,9 @@ private:
 	//water
 	float waterAnim;
 
+	//int m_width;
+	//int m_height;
+
 private:
 	Renderer();
 	~Renderer();
@@ -173,7 +176,7 @@ public:
 	static Renderer &getInstance();
 
     //init
-	void init();
+	void init(int w, int h);
 	void initGame(Game *game);
 	void initMenu(MainMenu *mm);
 	void reset3d();
