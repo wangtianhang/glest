@@ -20,6 +20,8 @@
 
 #include <freetype/freetype.h>
 
+bool g_useOldFont = true;
+
 namespace Shared{ namespace Graphics{ namespace Gl{
 
 using namespace Platform;
@@ -214,67 +216,76 @@ void Font2DGl::init(){
 // 		//createGlFontBitmaps(handle, type, size, width, charCount, metrics);
 // 		inited= true;
 // 	}
-	m_font = NULL;
 
 	if(!inited)
 	{
-		int pointSize = 15;
-		int dpi = CalculateDpi();
-		m_font = LoadFont("c:\\windows\\fonts\\verdana.ttf", pointSize, dpi);
-
-		GLchar vShader[] = 
-			"attribute vec4 vPosition;\n"
-			"attribute vec2 vTexCoord;\n"
-			"varying vec2 ToFragmentTexCoord;\n"
-			"void main(void)\n"
-			"{\n"
-			"	gl_Position = vec4(vPosition.x, vPosition.y, vPosition.z, vPosition.w);\n"
-			"	ToFragmentTexCoord = vTexCoord;\n"
-			"}\n";
-
-		GLchar fShader[] = 
-			//"precision mediump float;\n"
-			"uniform sampler2D s_texture;\n"
-			"varying vec2 ToFragmentTexCoord;\n"
-			"void main(void)\n"
-			"{\n"
-			"	gl_FragColor = texture2D(s_texture, ToFragmentTexCoord);\n"
-			"}\n";
-
-		GLuint vertexShader = LoadShader(GL_VERTEX_SHADER, vShader);
-		GLuint fragmentShader = LoadShader(GL_FRAGMENT_SHADER, fShader);
-
-		m_programObject = glCreateProgram();
-
-		glAttachShader(m_programObject, vertexShader);
-		glAttachShader(m_programObject, fragmentShader);
-
-		glLinkProgram(m_programObject);
-
-		GLint linked;
-		glGetProgramiv(m_programObject, GL_LINK_STATUS, &linked);
-		if(!linked)
+		if(g_useOldFont)
 		{
-			GLint infoLen = 0;
-			glGetProgramiv(m_programObject, GL_INFO_LOG_LENGTH, &infoLen);
-			if(infoLen > 1)
-			{
-				char * infoLog = (char *)malloc(sizeof(char) * infoLen);
-				glGetProgramInfoLog(m_programObject, infoLen, NULL, infoLog);
-				printf("%s", infoLog);
-				assert(false);
-				free(infoLog);
-			}
+			handle= glGenLists(charCount);
+			createGlFontBitmaps(handle, type, size, width, charCount, metrics);
 		}
- 
- 		glUseProgram(m_programObject);
-		GLint samplerLoc = glGetUniformLocation(m_programObject, "s_texture");
-		assertGl();
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_font->font_texture);
-		glUniform1i(samplerLoc, 0);
-		assertGl();
-		glUseProgram(0);
+		else
+		{
+			m_font = NULL;
+
+			int pointSize = size * 0.9f;
+			int dpi = CalculateDpi();
+			m_font = LoadFont("c:\\windows\\fonts\\verdana.ttf", pointSize, dpi);
+
+			GLchar vShader[] = 
+				"attribute vec4 vPosition;\n"
+				"attribute vec2 vTexCoord;\n"
+				"varying vec2 ToFragmentTexCoord;\n"
+				"void main(void)\n"
+				"{\n"
+				"	gl_Position = vec4(vPosition.x, vPosition.y, vPosition.z, vPosition.w);\n"
+				"	ToFragmentTexCoord = vTexCoord;\n"
+				"}\n";
+
+			GLchar fShader[] = 
+				//"precision mediump float;\n"
+				"uniform sampler2D s_texture;\n"
+				"varying vec2 ToFragmentTexCoord;\n"
+				"void main(void)\n"
+				"{\n"
+				"	gl_FragColor = texture2D(s_texture, ToFragmentTexCoord);\n"
+				"}\n";
+
+			GLuint vertexShader = LoadShader(GL_VERTEX_SHADER, vShader);
+			GLuint fragmentShader = LoadShader(GL_FRAGMENT_SHADER, fShader);
+
+			m_programObject = glCreateProgram();
+
+			glAttachShader(m_programObject, vertexShader);
+			glAttachShader(m_programObject, fragmentShader);
+
+			glLinkProgram(m_programObject);
+
+			GLint linked;
+			glGetProgramiv(m_programObject, GL_LINK_STATUS, &linked);
+			if(!linked)
+			{
+				GLint infoLen = 0;
+				glGetProgramiv(m_programObject, GL_INFO_LOG_LENGTH, &infoLen);
+				if(infoLen > 1)
+				{
+					char * infoLog = (char *)malloc(sizeof(char) * infoLen);
+					glGetProgramInfoLog(m_programObject, infoLen, NULL, infoLog);
+					printf("%s", infoLog);
+					assert(false);
+					free(infoLog);
+				}
+			}
+
+			glUseProgram(m_programObject);
+			GLint samplerLoc = glGetUniformLocation(m_programObject, "s_texture");
+			assertGl();
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, m_font->font_texture);
+			glUniform1i(samplerLoc, 0);
+			assertGl();
+			glUseProgram(0);
+		}
 
 		inited = true;
 	}
@@ -285,11 +296,14 @@ void Font2DGl::init(){
 void Font2DGl::end(){
 	assertGl();
 
-// 	if(inited){
-// 		assert(glIsList(handle));
-// 		glDeleteLists(handle, 1);
-// 		inited= false;
-// 	}
+	if(inited){
+		if(g_useOldFont)
+		{
+			assert(glIsList(handle));
+			glDeleteLists(handle, 1);
+		}
+		inited= false;
+	}
 
 	assertGl();
 }
