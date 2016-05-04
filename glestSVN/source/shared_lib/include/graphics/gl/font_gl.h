@@ -36,9 +36,9 @@ struct font_t {
 	float offset_x[128];
 	float offset_y[128];
 
-	int m_font_tex_width;
-	int m_font_tex_height;
-	GLubyte * m_font_texture_data;
+	//int m_font_tex_width;
+	//int m_font_tex_height;
+	//GLubyte * m_font_texture_data;
 
 	int initialized;
 };

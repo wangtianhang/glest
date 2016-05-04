@@ -105,7 +105,9 @@ font_t * LoadFont(std::string path, int pointSize, int dpi)
 	int font_tex_width = nextp2(g_num_segment_x * segment_size_x);
 	int font_tex_height = nextp2(g_num_segment_y * segment_size_y);
 
-	int textureSize = sizeof(GLubyte) * 2 * font_tex_width * font_tex_height;
+	int fontBold = 2;///???
+
+	int textureSize = sizeof(GLubyte) * fontBold * font_tex_width * font_tex_height;
 	GLubyte * font_texture_data = (GLubyte *)malloc(textureSize);
 	memset((void *)font_texture_data, 0, textureSize);
 
@@ -130,8 +132,8 @@ font_t * LoadFont(std::string path, int pointSize, int dpi)
 
 		for (int j = 0; j < glyph_height; j++) {
 			for (int i = 0; i < glyph_width; i++) {
-				font_texture_data[2 * ((bitmap_offset_x + i) + (j + bitmap_offset_y) * font_tex_width) + 0] =
-					font_texture_data[2 * ((bitmap_offset_x + i) + (j + bitmap_offset_y) * font_tex_width) + 1] =
+				font_texture_data[fontBold * ((bitmap_offset_x + i) + (j + bitmap_offset_y) * font_tex_width) + 0] =
+					font_texture_data[fontBold * ((bitmap_offset_x + i) + (j + bitmap_offset_y) * font_tex_width) + 1] =
 					(i >= bmp.width || j >= bmp.rows)? 0 : bmp.buffer[i + bmp.width * j];
 			}
 		}
@@ -152,9 +154,9 @@ font_t * LoadFont(std::string path, int pointSize, int dpi)
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 
-	font->m_font_tex_width = font_tex_width;
-	font->m_font_tex_height = font_tex_height;
-	font->m_font_texture_data = font_texture_data;
+	//font->m_font_tex_width = font_tex_width;
+	//font->m_font_tex_height = font_tex_height;
+	//font->m_font_texture_data = font_texture_data;
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, font_tex_width, font_tex_height, 0, GL_LUMINANCE_ALPHA , GL_UNSIGNED_BYTE, font_texture_data);
 	int glErr = glGetError();
@@ -163,7 +165,7 @@ font_t * LoadFont(std::string path, int pointSize, int dpi)
 		assert(false);
 	}
 
-	//free(font_texture_data);
+	free(font_texture_data);
 
 	FT_Done_Face(face);
 	FT_Done_FreeType(library);
