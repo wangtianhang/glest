@@ -50,13 +50,13 @@ const int VERTEX_TEXCOORD_INDX  = 1;
 const int VERTEX_POS_SIZE = 3;
 const int VERTEX_TEXCOORD_SIZE = 2;
 
-const int strSize = 256;
+//const int strSize = 256;
 
 extern const unsigned int WindowWidth;
 extern const unsigned int WindowHeight;
 
 std::string intToStr(int i){
-	char str[strSize];
+	char str[256];
 	sprintf(str, "%d", i);
 	return str; 
 }
@@ -461,11 +461,11 @@ void RenderText( const char * msg, int x, int y)
 	{
 		if(i % 3 == 0)
 		{
-			vertices[i] = vertices[i] / 400 // фад╩╟К©М╤х;
+			vertices[i] = vertices[i] / 400; // фад╩╟К©М╤х;
 		}
 		else if(i % 3 == 1)
 		{
-			vertices[i] = vertices[i] / 300 // фад╩╟К╦ъ╤х;
+			vertices[i] = vertices[i] / 300; // фад╩╟К╦ъ╤х;
 		}
 		else
 		{
